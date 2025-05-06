@@ -191,10 +191,13 @@ export default {
 /* Split About Section */
 .split-about-section {
   background-color: #cba78f;
-  padding: 4rem 1rem;
+  padding: 5rem 0;
   display: flex;
   justify-content: center;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+  
 }
+
 
 .split-box {
   background-color: white;
@@ -203,13 +206,18 @@ export default {
   max-width: 1000px;
   width: 100%;
   overflow: hidden;
+  min-height: 500px; /* Increase the height of the card */
 }
 
 .split-text {
   flex: 1;
-  padding: 3rem;
+  padding: 4rem 3rem; /* Increased padding for taller text area */
   text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
+
 
 .split-label {
   text-transform: uppercase;
@@ -251,4 +259,11 @@ export default {
   height: 100%;
   object-fit: cover;
 }
+
+.split-wrapper {
+  border: 1px solid white;
+  padding: 0px;
+  display: inline-block;
+}
+
 </style>
