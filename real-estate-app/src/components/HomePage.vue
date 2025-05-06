@@ -3,17 +3,16 @@
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm w-100 px-5 py-4 nav-tall">
       <div class="container-fluid d-flex justify-content-between align-items-center">
-
         <!-- Left Menu -->
         <ul class="navbar-nav flex-row">
+          <li class="nav-item me-4">
+            <router-link to="/home" class="nav-link">Home</router-link>
+          </li>
           <li class="nav-item me-4">
             <router-link to="/about" class="nav-link">About</router-link>
           </li>
           <li class="nav-item me-4">
-            <router-link to="/services" class="nav-link">Services</router-link>
-          </li>
-          <li class="nav-item me-4">
-            <router-link to="/portfolio" class="nav-link">Portfolio</router-link>
+            <router-link to="/news" class="nav-link">News</router-link>
           </li>
         </ul>
 
@@ -45,6 +44,41 @@
         </p>
       </div>
     </header>
+
+    <!-- ABOUT SECTION -->
+    <section class="about-section text-center">
+      <div class="container py-5">
+        <p class="about-subheading mb-3">BASED IN CHARLESTON BUT TRAVEL WORLDWIDE</p>
+        <h2 class="about-title mb-3">Wedding & Event Planning,</h2>
+        <div class="about-divider mb-4"></div>
+        <p class="about-description mx-auto">
+          From made-to-measure weddings to elaborate corporate events that nurture company connections,
+          Fox Events has a flair for transforming bespoke spaces into unforgettable experiences.
+        </p>
+      </div>
+    </section>
+
+    <!-- SPLIT ABOUT IMAGE SECTION -->
+    <section class="split-about-section">
+      <div class="split-box">
+        <!-- Left Text -->
+        <div class="split-text">
+          <p class="split-label">ABOUT</p>
+          <h2 class="split-title">We Create Meaningful Experiences</h2>
+          <p class="split-description">
+            With years of experience, our team is passionate about turning your dreams into reality.
+            We believe every event should reflect your story and values — that’s why we plan with heart,
+            care, and creativity.
+          </p>
+          <router-link to="/about" class="split-button">Learn More</router-link>
+        </div>
+
+        <!-- Right Image -->
+        <div class="split-image">
+          <img :src="require('@/assets/people.png')" alt="Team People" />
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
@@ -74,7 +108,7 @@ export default {
 .hero-section {
   background-size: cover;
   background-position: center;
-  height: 90vh;
+  height: 60vh;
   width: 100vw;
   margin: 0;
   padding: 0;
@@ -117,5 +151,104 @@ export default {
   font-size: 1.1rem;
   color: #111;
   font-family: 'Georgia', serif;
+}
+
+/* About top text section */
+.about-section {
+  background-color: #f9f4f1;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+.about-subheading {
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  color: #111;
+  font-weight: 600;
+}
+
+.about-title {
+  font-family: 'Georgia', serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: #999167;
+}
+
+.about-divider {
+  width: 40px;
+  height: 2px;
+  background-color: #111;
+  margin: 0 auto;
+}
+
+.about-description {
+  max-width: 700px;
+  font-size: 1rem;
+  line-height: 1.8;
+  color: #111;
+}
+
+/* Split About Section */
+.split-about-section {
+  background-color: #cba78f;
+  padding: 4rem 1rem;
+  display: flex;
+  justify-content: center;
+}
+
+.split-box {
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 1000px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.split-text {
+  flex: 1;
+  padding: 3rem;
+  text-align: center;
+}
+
+.split-label {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: #000;
+  margin-bottom: 1rem;
+}
+
+.split-title {
+  font-family: 'Georgia', serif;
+  font-size: 1.8rem;
+  color: #987c5e;
+  margin-bottom: 1.5rem;
+}
+
+.split-description {
+  font-size: 1rem;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.split-button {
+  padding: 0.6rem 1.5rem;
+  background-color: #000;
+  color: #fff;
+  text-decoration: none;
+  font-weight: bold;
+  letter-spacing: 1px;
+}
+
+.split-image {
+  flex: 1;
+  overflow: hidden;
+}
+
+.split-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 </style>
