@@ -45,7 +45,7 @@
       </div>
     </header>
 
-    <!-- ABOUT SECTION -->
+    <!-- INFO SECTION -->
     <section class="about-section text-center">
       <div class="container py-5">
         <p class="about-subheading mb-3">BASED IN CHARLESTON BUT TRAVEL WORLDWIDE</p>
@@ -58,7 +58,7 @@
       </div>
     </section>
 
-    <!-- SPLIT ABOUT IMAGE SECTION -->
+    <!-- ABOUT LINK SECTION -->
     <section class="split-about-section">
       <div class="split-box">
         <!-- Left Text -->
@@ -73,18 +73,28 @@
           <router-link to="/about" class="split-button">Learn More</router-link>
         </div>
 
-        <!-- Right Image -->
+        <!-- Image -->
         <div class="split-image">
           <img :src="require('@/assets/people.png')" alt="Team People" />
         </div>
       </div>
     </section>
+
+     <!-- HOUSE SLIDER SECTION -->
+    <section class="house-slider-section">
+      <HouseSlider />
+    </section>
   </div>
 </template>
 
 <script>
+import HouseSlider from '@/components/HouseSlider.vue';
+
 export default {
-  name: 'HomePage'
+  name: 'HomePage',
+  components: {
+    HouseSlider
+  }
 }
 </script>
 
