@@ -80,10 +80,56 @@
       </div>
     </section>
 
-     <!-- HOUSE SLIDER SECTION -->
+    <!-- HOUSE SLIDER SECTION -->
     <section class="house-slider-section">
       <HouseSlider />
     </section>
+
+    <!-- CONNECT SECTION -->
+    <section class="split-connect-section">
+      <div class="split-box">
+        <!-- Left Text -->
+        <div class="split-text">
+          <p class="split-label">CONNECT</p>
+          <h2 class="split-title">Let’s Start the Conversation</h2>
+          <p class="split-description">
+            Whether you're planning your dream home or just exploring ideas, our team is ready to help you take the next step. Reach out and let’s build something great together.
+          </p>
+          <router-link to="/contact" class="split-button">Get in Touch</router-link>
+        </div>
+
+        <!-- Right Image -->
+        <div class="split-image">
+          <img :src="require('@/assets/contact.png')" alt="Get in Touch" />
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER SECTION (modern layout like screenshot) -->
+    <footer class="footer-modern py-5">
+      <div class="container d-flex flex-wrap justify-content-between align-items-center">
+        <!-- Left: Footer Links -->
+        <div class="footer-left mb-4 mb-lg-0">
+          <router-link to="/about" class="footer-link-modern">About</router-link>
+          <router-link to="/services" class="footer-link-modern">Services</router-link>
+          <router-link to="/news" class="footer-link-modern">Portfolio</router-link>
+        </div>
+
+        <!-- Center: Logo Image and tagline -->
+        <div class="footer-center text-center mb-4 mb-lg-0">
+          <img src="@/assets/logo.png" alt="Urban Haven Logo" class="footer-logo-img" />
+          <div class="footer-tagline">planning with heart</div>
+        </div>
+
+        <!-- Right: Book Button and Icons -->
+        <div class="footer-right d-flex align-items-center gap-3">
+          <router-link to="/contact" class="btn btn-book-tour">Book a Tour</router-link>
+          <i class="bi bi-instagram icon-social"></i>
+          <i class="bi bi-facebook icon-social"></i>
+          <i class="bi bi-linkedin icon-social"></i>
+        </div>
+      </div>
+    </footer>
   </div>
 </template>
 
@@ -165,7 +211,7 @@ export default {
 
 /* About top text section */
 .about-section {
-  background-color: #f9f4f1;
+  background-color: white;
   padding-top: 4rem;
   padding-bottom: 4rem;
 }
@@ -198,16 +244,22 @@ export default {
   color: #111;
 }
 
-/* Split About Section */
+/* Shared Split Section Style */
 .split-about-section {
   background-color: #cba78f;
   padding: 5rem 0;
   display: flex;
   justify-content: center;
   box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
-  
 }
 
+.split-connect-section {
+  background-color: #a6a176;
+  padding: 5rem 0;
+  display: flex;
+  justify-content: center;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+}
 
 .split-box {
   background-color: white;
@@ -216,18 +268,17 @@ export default {
   max-width: 1000px;
   width: 100%;
   overflow: hidden;
-  min-height: 500px; /* Increase the height of the card */
+  min-height: 500px;
 }
 
 .split-text {
   flex: 1;
-  padding: 4rem 3rem; /* Increased padding for taller text area */
+  padding: 4rem 3rem;
   text-align: center;
   display: flex;
   flex-direction: column;
   justify-content: center;
 }
-
 
 .split-label {
   text-transform: uppercase;
@@ -270,10 +321,72 @@ export default {
   object-fit: cover;
 }
 
-.split-wrapper {
-  border: 1px solid white;
-  padding: 0px;
+/* Footer Styles */
+.footer-modern {
+  background-color: #f8f5f1;
+  border-top: 1px solid #ddd;
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+
+.footer-left,
+.footer-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.footer-link-modern {
+  font-size: 1rem;
+  color: #111;
+  text-decoration: underline;
+  font-family: 'Georgia', serif;
+}
+
+.footer-logo-img {
+  max-width: 180px;
+  height: auto;
+  margin-bottom: 0.5rem;
+}
+
+.footer-tagline {
+  font-size: 0.75rem;
+  color: #777;
+  letter-spacing: 1px;
+  margin-top: 0.3rem;
+}
+
+.btn-book-tour {
+  background-color: #89a6a6;
+  color: white;
+  border: none;
+  font-family: 'Georgia', serif;
+  letter-spacing: 1px;
+  padding: 0.5rem 1.2rem;
+}
+
+.btn-book-tour:hover {
+  background-color: #7a9797;
+}
+
+.icon-social {
+  font-size: 1.1rem;
+  color: white;
+  background-color: #000;
+  padding: 0.4rem;
   display: inline-block;
 }
 
+@media (max-width: 768px) {
+  .footer-left,
+  .footer-right {
+    justify-content: center;
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  .footer-center {
+    width: 100%;
+  }
+}
 </style>

@@ -1,10 +1,10 @@
 <template>
   <div class="house-carousel-container">
     <!-- Title Section -->
-    <section class="slider-title-section text-center py-5">
+    <section class="slider-title-section text-center pt-3 pb-1">
       <p class="slider-subheading">FEATURED HOMES</p>
       <h2 class="slider-heading">Modern, Affordable, Comfortable</h2>
-      <div class="slider-divider mx-auto mt-3"></div>
+      <div class="slider-divider mx-auto mt-2"></div>
     </section>
 
     <!-- Carousel -->
@@ -63,7 +63,7 @@ export default {
 
 <style scoped>
 .house-carousel-container {
-  margin: 4rem auto;
+  margin: 2rem auto; /* Reduced top margin */
   max-width: 1000px;
   padding: 0 1rem;
 }
@@ -81,7 +81,7 @@ export default {
   text-transform: uppercase;
   color: #111;
   font-weight: 600;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
 }
 
 .slider-heading {
@@ -95,6 +95,7 @@ export default {
   width: 50px;
   height: 2px;
   background-color: #333;
+  margin: 0 auto;
 }
 
 /* Carousel section */
