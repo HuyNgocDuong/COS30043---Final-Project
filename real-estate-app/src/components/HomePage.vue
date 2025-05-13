@@ -91,7 +91,7 @@
         <!-- Left Text -->
         <div class="split-text">
           <p class="split-label">CONNECT</p>
-          <h2 class="split-title">Let’s Start the Conversation</h2>
+          <h2 class="split-title1">Let’s Start the Conversation</h2>
           <p class="split-description">
             Whether you're planning your dream home or just exploring ideas, our team is ready to help you take the next step. Reach out and let’s build something great together.
           </p>
@@ -115,21 +115,24 @@
           <router-link to="/news" class="footer-link-modern">Portfolio</router-link>
         </div>
 
-        <!-- Center: Logo Image and tagline -->
+        <!-- Center: Logo Text and tagline -->
         <div class="footer-center text-center mb-4 mb-lg-0">
-          <img src="@/assets/logo.png" alt="Urban Haven Logo" class="footer-logo-img" />
+          <div class="logo-text">
+            <span class="logo-name">URBAN HAVEN</span>
+          </div>
           <div class="footer-tagline">planning with heart</div>
         </div>
 
         <!-- Right: Book Button and Icons -->
         <div class="footer-right d-flex align-items-center gap-3">
-          <router-link to="/contact" class="btn btn-book-tour">Book a Tour</router-link>
+          <router-link to="/contact" class="btn btn-book-consultation">Book a Consultation</router-link>
           <i class="bi bi-instagram icon-social"></i>
           <i class="bi bi-facebook icon-social"></i>
           <i class="bi bi-linkedin icon-social"></i>
         </div>
       </div>
     </footer>
+
   </div>
 </template>
 
@@ -295,6 +298,13 @@ export default {
   margin-bottom: 1.5rem;
 }
 
+.split-title1 {
+  font-family: 'Georgia', serif;
+  font-size: 1.8rem;
+  color: #a6a176;
+  margin-bottom: 1.5rem;
+}
+
 .split-description {
   font-size: 1rem;
   color: #333;
@@ -343,39 +353,60 @@ export default {
   font-family: 'Georgia', serif;
 }
 
-.footer-logo-img {
-  max-width: 180px;
-  height: auto;
-  margin-bottom: 0.5rem;
+/* Footer text-based logo styles */
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Georgia', serif;
+  text-align: center;
+  width: 100%;
+}
+
+.logo-name {
+  font-size: 2.5rem; 
+  color: #333;
+  letter-spacing: 2px; 
+  text-transform: uppercase;
 }
 
 .footer-tagline {
   font-size: 0.75rem;
   color: #777;
   letter-spacing: 1px;
-  margin-top: 0.3rem;
-}
-
-.btn-book-tour {
-  background-color: #89a6a6;
-  color: white;
-  border: none;
+  margin-top: 0.4rem;
+  font-style: italic;
+  text-transform: capitalize;
   font-family: 'Georgia', serif;
-  letter-spacing: 1px;
-  padding: 0.5rem 1.2rem;
+  color: #888;
 }
 
-.btn-book-tour:hover {
-  background-color: #7a9797;
-}
-
-.icon-social {
-  font-size: 1.1rem;
+/* Book a Consultation Button */
+.btn-book-consultation {
+  background-color: #a6b8b8;
   color: white;
-  background-color: #000;
-  padding: 0.4rem;
-  display: inline-block;
+  padding: 0.5rem 1.2rem;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 1px;
+  font-family: 'Georgia', serif;
 }
+
+.btn-book-consultation:hover {
+  background-color: #8a9999;
+}
+
+/* Social Icon styles */
+.icon-social {
+  font-size: 1.5rem;
+  color: #333;
+  margin-left: 1rem;
+}
+
+
+
 
 @media (max-width: 768px) {
   .footer-left,
