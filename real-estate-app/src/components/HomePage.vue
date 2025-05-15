@@ -151,7 +151,12 @@ export default {
 /* Navbar */
 .nav-tall {
   min-height: 120px;
-  position: relative;
+  position: fixed; /* Keeps the navbar fixed on top */
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10; /* Ensures navbar is always on top */
+  background-color: #fff; /* Optional: Adds a background color to the navbar */
 }
 
 .logo-img {
@@ -163,53 +168,52 @@ export default {
   margin: 0 auto;
 }
 
-/* Hero section */
+/* Hero Section */
 .hero-section {
+  background-image: url('@/assets/home.png');
   background-size: cover;
   background-position: center;
-  height: 60vh;
-  width: 100vw;
-  margin: 0;
-  padding: 0;
+  background-repeat: no-repeat;
+  height: 100vh;
+  width: 100%;
+  margin-top: -120px;
   position: relative;
-  overflow: hidden;
-}
-
-.hero-section::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background-color: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(5px);
   z-index: 0;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start; /* Aligns text to the top of the container */
+  padding-top: 20vh; /* Moves text down by 20% of the viewport height */
 }
 
 .hero-text {
   position: relative;
   z-index: 1;
-  max-width: 900px;
-  padding: 2rem;
+  text-align: center;
+  color: #fff; 
+  padding: 0 2rem; 
 }
 
 .hero-title {
   font-family: 'Georgia', serif;
   font-size: 3rem;
   font-weight: 500;
-  color: #111;
   letter-spacing: 1px;
+  margin-bottom: 20px;
 }
 
 .hero-divider {
-  width: 400px;
-  height: 1px;
-  background-color: #111;
-  margin: 0 auto 1rem auto;
+  width: 100px;
+  height: 2px;
+  background-color: #fff;
+  margin: 0 auto 20px auto;
 }
 
 .hero-subtext {
   font-size: 1.1rem;
-  color: #111;
+  letter-spacing: 1px;
   font-family: 'Georgia', serif;
+  max-width: 700px;
 }
 
 /* About top text section */
