@@ -3,7 +3,6 @@
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm w-100 px-5 py-4 nav-tall">
       <div class="container-fluid d-flex justify-content-between align-items-center">
-        <!-- Left Menu -->
         <ul class="navbar-nav flex-row">
           <li class="nav-item me-4">
             <router-link to="/home" class="nav-link">Home</router-link>
@@ -16,12 +15,10 @@
           </li>
         </ul>
 
-        <!-- Centered Logo -->
         <div class="navbar-logo text-center position-absolute top-50 start-50 translate-middle">
           <img src="@/assets/logo.png" alt="Logo" class="logo-img" />
         </div>
 
-        <!-- Right Icons + Button -->
         <div class="d-flex align-items-center">
           <i class="bi bi-instagram fs-5 me-3"></i>
           <i class="bi bi-facebook fs-5 me-3"></i>
@@ -36,7 +33,7 @@
       class="hero-section d-flex justify-content-center align-items-center text-center"
       :style="{ backgroundImage: `url(${require('@/assets/home.png')})` }"
     >
-      <div class="hero-text">
+      <div class="hero-text" :class="{ 'hero-visible': heroVisible }" v-show="heroVisible">
         <h1 class="hero-title mb-3">Planning with Heart</h1>
         <div class="hero-divider mb-3"></div>
         <p class="hero-subtext">
@@ -45,37 +42,42 @@
       </div>
     </header>
 
-    <!-- INFO SECTION -->
-    <section class="about-section text-center">
-      <div class="container py-5">
-        <p class="about-subheading mb-3">BASED IN CHARLESTON BUT TRAVEL WORLDWIDE</p>
-        <h2 class="about-title mb-3">Wedding & Event Planning,</h2>
-        <div class="about-divider mb-4"></div>
-        <p class="about-description mx-auto">
-          From made-to-measure weddings to elaborate corporate events that nurture company connections,
-          Fox Events has a flair for transforming bespoke spaces into unforgettable experiences.
-        </p>
-      </div>
-    </section>
-
-    <!-- ABOUT LINK SECTION -->
-    <section class="split-about-section">
-      <div class="split-box">
-        <!-- Left Text -->
-        <div class="split-text">
-          <p class="split-label">ABOUT</p>
-          <h2 class="split-title">We Create Meaningful Experiences</h2>
-          <p class="split-description">
-            With years of experience, our team is passionate about turning your dreams into reality.
-            We believe every event should reflect your story and values — that’s why we plan with heart,
-            care, and creativity.
-          </p>
-          <router-link to="/about" class="split-button">Learn More</router-link>
+    <!-- ABOUT SECTION -->
+    <section :class="['brand-about-section d-flex align-items-center justify-content-center', { visible: isVisible }]" ref="aboutSection">
+      <div class="container d-flex flex-wrap align-items-center justify-content-center">
+        <div class="about-image-wrapper">
+          <img src="@/assets/house 1.png" alt="Modern House" class="about-image" />
         </div>
 
-        <!-- Image -->
-        <div class="split-image">
-          <img :src="require('@/assets/people.png')" alt="Team People" />
+        <div class="about-content">
+          <h2 class="about-heading"><strong>About</strong> Our Brand</h2>
+          <p class="about-subtext">Passionate About Properties, Dedicated to Your Vision</p>
+
+          <div class="about-stats">
+            <div class="stat-box">
+              <h4>{{ isVisible ? animatedStats.years : 0 }}+</h4>
+              <p>Years of Excellence</p>
+            </div>
+            <div class="stat-box">
+              <h4>{{ isVisible ? animatedStats.projects : 0 }}+</h4>
+              <p>Projects Completed</p>
+            </div>
+            <div class="stat-box">
+              <h4>{{ isVisible ? animatedStats.area : 0 }}+</h4>
+              <p>Mn. Sq. Ft. Delivered</p>
+            </div>
+            <div class="stat-box">
+              <h4>{{ isVisible ? animatedStats.ongoing : 0 }}+</h4>
+              <p>Ongoing Projects</p>
+            </div>
+          </div>
+
+          <p class="about-description">
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+          </p>
+
+          <router-link to="/about" class="btn-learn-more">Learn more</router-link>
         </div>
       </div>
     </section>
@@ -84,55 +86,6 @@
     <section class="house-slider-section">
       <HouseSlider />
     </section>
-
-    <!-- CONNECT SECTION -->
-    <section class="split-connect-section">
-      <div class="split-box">
-        <!-- Left Text -->
-        <div class="split-text">
-          <p class="split-label">CONNECT</p>
-          <h2 class="split-title1">Let’s Start the Conversation</h2>
-          <p class="split-description">
-            Whether you're planning your dream home or just exploring ideas, our team is ready to help you take the next step. Reach out and let’s build something great together.
-          </p>
-          <router-link to="/contact" class="split-button">Get in Touch</router-link>
-        </div>
-
-        <!-- Right Image -->
-        <div class="split-image">
-          <img :src="require('@/assets/contact.png')" alt="Get in Touch" />
-        </div>
-      </div>
-    </section>
-
-    <!-- FOOTER SECTION (modern layout like screenshot) -->
-    <footer class="footer-modern py-5">
-      <div class="container d-flex flex-wrap justify-content-between align-items-center">
-        <!-- Left: Footer Links -->
-        <div class="footer-left mb-4 mb-lg-0">
-          <router-link to="/about" class="footer-link-modern">About</router-link>
-          <router-link to="/services" class="footer-link-modern">Services</router-link>
-          <router-link to="/news" class="footer-link-modern">Portfolio</router-link>
-        </div>
-
-        <!-- Center: Logo Text and tagline -->
-        <div class="footer-center text-center mb-4 mb-lg-0">
-          <div class="logo-text">
-            <span class="logo-name">URBAN HAVEN</span>
-          </div>
-          <div class="footer-tagline">planning with heart</div>
-        </div>
-
-        <!-- Right: Book Button and Icons -->
-        <div class="footer-right d-flex align-items-center gap-3">
-          <router-link to="/contact" class="btn btn-book-consultation">Book a Consultation</router-link>
-          <i class="bi bi-instagram icon-social"></i>
-          <i class="bi bi-facebook icon-social"></i>
-          <i class="bi bi-linkedin icon-social"></i>
-        </div>
-      </div>
-    </footer>
-
   </div>
 </template>
 
@@ -142,21 +95,95 @@ import HouseSlider from '@/components/HouseSlider.vue';
 export default {
   name: 'HomePage',
   components: {
-    HouseSlider
+  HouseSlider
+  },
+  data() {
+    return {
+      isVisible: false,
+      heroVisible: false,
+      animatedStats: {
+        years: 0,
+        projects: 0,
+        area: 0,
+        ongoing: 0
+      }
+    };
+  },
+  mounted() {
+    // Allow Vue to render first, then trigger animation
+    setTimeout(() => {
+      this.heroVisible = true;
+    }, 100);
+    window.addEventListener('scroll', this.handleScroll);
+  },  
+  beforeUnmount() {
+    window.removeEventListener('scroll', this.handleScroll);
+  },
+  methods: {
+    handleScroll() {
+      const section = this.$refs.aboutSection;
+      const sectionTop = section.getBoundingClientRect().top;
+      const triggerPoint = window.innerHeight * 0.75;
+
+      if (sectionTop < triggerPoint && !this.isVisible) {
+        this.isVisible = true;
+        this.animateNumbers();
+      }
+    },
+    animateNumbers() {
+      const duration = 1500;
+      const frameRate = 30;
+      const steps = duration / frameRate;
+
+      const finalValues = {
+        years: 10,
+        projects: 12,
+        area: 20,
+        ongoing: 25
+      };
+
+      const counters = {
+        years: 0,
+        projects: 0,
+        area: 0,
+        ongoing: 0
+      };
+
+      const increment = {};
+      for (let key in finalValues) {
+        increment[key] = finalValues[key] / steps;
+      }
+
+      let currentStep = 0;
+      const interval = setInterval(() => {
+        for (let key in counters) {
+          counters[key] += increment[key];
+          this.animatedStats[key] = Math.floor(counters[key]);
+        }
+
+        currentStep++;
+        if (currentStep >= steps) {
+          for (let key in finalValues) {
+            this.animatedStats[key] = finalValues[key];
+          }
+          clearInterval(interval);
+        }
+      }, frameRate);
+    }
   }
-}
+};
 </script>
 
 <style scoped>
 /* Navbar */
 .nav-tall {
   min-height: 120px;
-  position: fixed; /* Keeps the navbar fixed on top */
+  position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  z-index: 10; /* Ensures navbar is always on top */
-  background-color: #fff; /* Optional: Adds a background color to the navbar */
+  z-index: 10;
+  background-color: #fff;
 }
 
 .logo-img {
@@ -170,7 +197,6 @@ export default {
 
 /* Hero Section */
 .hero-section {
-  background-image: url('@/assets/home.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -182,16 +208,24 @@ export default {
   overflow: hidden;
   display: flex;
   justify-content: center;
-  align-items: flex-start; /* Aligns text to the top of the container */
-  padding-top: 20vh; /* Moves text down by 20% of the viewport height */
+  align-items: flex-start;
+  padding-top: 20vh;
 }
 
 .hero-text {
   position: relative;
   z-index: 1;
   text-align: center;
-  color: #fff; 
-  padding: 0 2rem; 
+  color: #fff;
+  padding: 0 2rem;
+  opacity: 0;
+  transform: translateY(30px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.hero-visible {
+  opacity: 1;
+  transform: translateY(0);
 }
 
 .hero-title {
@@ -216,212 +250,135 @@ export default {
   max-width: 700px;
 }
 
-/* About top text section */
-.about-section {
-  background-color: white;
-  padding-top: 4rem;
-  padding-bottom: 4rem;
+/* About Section */
+.brand-about-section {
+  padding: 6rem 1rem;
+  background-color: #fff;
+  transition: all 0.5s ease-out;
 }
 
-.about-subheading {
-  font-size: 0.85rem;
-  letter-spacing: 2px;
-  color: #111;
-  font-weight: 600;
+.container {
+  max-width: 1200px;
+  gap: 3rem;
 }
 
-.about-title {
-  font-family: 'Georgia', serif;
-  font-size: 2rem;
-  font-weight: 400;
-  color: #999167;
-}
-
-.about-divider {
-  width: 40px;
-  height: 2px;
-  background-color: #111;
-  margin: 0 auto;
-}
-
-.about-description {
-  max-width: 700px;
-  font-size: 1rem;
-  line-height: 1.8;
-  color: #111;
-}
-
-/* Shared Split Section Style */
-.split-about-section {
-  background-color: #cba78f;
-  padding: 5rem 0;
-  display: flex;
-  justify-content: center;
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
-}
-
-.split-connect-section {
-  background-color: #a6a176;
-  padding: 5rem 0;
-  display: flex;
-  justify-content: center;
-  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
-}
-
-.split-box {
-  background-color: white;
-  display: flex;
-  flex-wrap: wrap;
-  max-width: 1000px;
-  width: 100%;
-  overflow: hidden;
-  min-height: 500px;
-}
-
-.split-text {
+.about-image-wrapper {
   flex: 1;
-  padding: 4rem 3rem;
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  max-width: 550px;
+  height: 500px;
+  overflow: hidden;
+  border-top-left-radius: 300px 300px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
 }
 
-.split-label {
-  text-transform: uppercase;
-  font-size: 0.8rem;
-  letter-spacing: 2px;
-  color: #000;
+.about-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
+}
+
+.about-content {
+  flex: 1;
+  max-width: 600px;
+  padding-left: 3rem;
+}
+
+.about-heading {
+  font-size: 2.8rem;
+  font-weight: 700;
+  font-family: 'Poppins', sans-serif;
   margin-bottom: 1rem;
 }
 
-.split-title {
-  font-family: 'Georgia', serif;
-  font-size: 1.8rem;
-  color: #987c5e;
-  margin-bottom: 1.5rem;
-}
-
-.split-title1 {
-  font-family: 'Georgia', serif;
-  font-size: 1.8rem;
-  color: #a6a176;
-  margin-bottom: 1.5rem;
-}
-
-.split-description {
+.about-subtext {
   font-size: 1rem;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem 3rem;
+  margin-bottom: 2rem;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+
+.brand-about-section.visible .about-stats {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.stat-box h4 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: #000;
+  margin: 0 0 0.2rem 0;
+}
+
+.stat-box p {
+  font-size: 1rem;
+  color: #333;
+  margin: 0;
+}
+
+.about-description {
+  font-size: 1rem;
+  line-height: 1.8;
   color: #333;
   margin-bottom: 2rem;
 }
 
-.split-button {
-  padding: 0.6rem 1.5rem;
-  background-color: #000;
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  letter-spacing: 1px;
-}
-
-.split-image {
-  flex: 1;
-  overflow: hidden;
-}
-
-.split-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* Footer Styles */
-.footer-modern {
-  background-color: #f8f5f1;
-  border-top: 1px solid #ddd;
-  padding-top: 3rem;
-  padding-bottom: 3rem;
-}
-
-.footer-left,
-.footer-right {
-  display: flex;
-  align-items: center;
-  gap: 1.5rem;
-}
-
-.footer-link-modern {
-  font-size: 1rem;
-  color: #111;
-  text-decoration: underline;
-  font-family: 'Georgia', serif;
-}
-
-/* Footer text-based logo styles */
-.logo-text {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-family: 'Georgia', serif;
-  text-align: center;
-  width: 100%;
-}
-
-.logo-name {
-  font-size: 2.5rem; 
-  color: #333;
-  letter-spacing: 2px; 
-  text-transform: uppercase;
-}
-
-.footer-tagline {
-  font-size: 0.75rem;
-  color: #777;
-  letter-spacing: 1px;
-  margin-top: 0.4rem;
-  font-style: italic;
-  text-transform: capitalize;
-  font-family: 'Georgia', serif;
-  color: #888;
-}
-
-/* Book a Consultation Button */
-.btn-book-consultation {
-  background-color: #a6b8b8;
+.btn-learn-more {
+  background-color: #0d6efd;
   color: white;
-  padding: 0.5rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.6rem 1.4rem;
   border-radius: 5px;
   text-decoration: none;
-  font-weight: 600;
-  letter-spacing: 1px;
-  font-family: 'Georgia', serif;
+  display: inline-block;
+  transition: background-color 0.3s ease;
 }
 
-.btn-book-consultation:hover {
-  background-color: #8a9999;
+.btn-learn-more:hover {
+  background-color: #0b5ed7;
 }
 
-/* Social Icon styles */
-.icon-social {
-  font-size: 1.5rem;
-  color: #333;
-  margin-left: 1rem;
+.house-slider-section {
+  background-color: #f8f9fa;
+  padding: 4rem 1rem;
 }
 
-
-
-
-@media (max-width: 768px) {
-  .footer-left,
-  .footer-right {
-    justify-content: center;
-    width: 100%;
-    margin-bottom: 1rem;
+/* Responsive Fix */
+@media (max-width: 992px) {
+  .brand-about-section .container {
+    flex-direction: column;
+    text-align: center;
   }
 
-  .footer-center {
-    width: 100%;
+  .about-content {
+    padding: 0 1rem;
+  }
+
+  .about-stats {
+    grid-template-columns: repeat(2, 1fr);
+    justify-content: center;
+  }
+
+  .about-image-wrapper {
+    clip-path: ellipse(90% 90% at 50% 50%);
+    height: 300px;
+  }
+
+  .about-image {
+    height: 100%;
   }
 }
 </style>
