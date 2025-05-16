@@ -86,16 +86,22 @@
     <section class="house-slider-section">
       <HouseSlider />
     </section>
+
+    <section class="customer-section">
+       <CustomerFeedback />
+    </section>
   </div>
 </template>
 
 <script>
 import HouseSlider from '@/components/HouseSlider.vue';
+import CustomerFeedback from '@/components/CustomerFeedback.vue';
 
 export default {
   name: 'HomePage',
   components: {
-  HouseSlider
+    HouseSlider,
+    CustomerFeedback
   },
   data() {
     return {
@@ -110,12 +116,11 @@ export default {
     };
   },
   mounted() {
-    // Allow Vue to render first, then trigger animation
     setTimeout(() => {
       this.heroVisible = true;
     }, 100);
     window.addEventListener('scroll', this.handleScroll);
-  },  
+  },
   beforeUnmount() {
     window.removeEventListener('scroll', this.handleScroll);
   },
@@ -353,6 +358,11 @@ export default {
 
 .house-slider-section {
   background-color: #f8f9fa;
+  padding: 4rem 1rem;
+}
+
+.customer-section{
+  background-color: #fff;
   padding: 4rem 1rem;
 }
 
