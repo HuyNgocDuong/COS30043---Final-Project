@@ -1,32 +1,9 @@
 <template>
   <div>
-    <!-- NAVBAR -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm w-100 px-5 py-4 nav-tall">
-      <div class="container-fluid d-flex justify-content-between align-items-center">
-        <ul class="navbar-nav flex-row">
-          <li class="nav-item me-4">
-            <router-link to="/home" class="nav-link">Home</router-link>
-          </li>
-          <li class="nav-item me-4">
-            <router-link to="/about" class="nav-link">About</router-link>
-          </li>
-          <li class="nav-item me-4">
-            <router-link to="/news" class="nav-link">News</router-link>
-          </li>
-        </ul>
-
-        <div class="navbar-logo text-center position-absolute top-50 start-50 translate-middle">
-          <img src="@/assets/logo.png" alt="Logo" class="logo-img" />
-        </div>
-
-        <div class="d-flex align-items-center">
-          <i class="bi bi-instagram fs-5 me-3"></i>
-          <i class="bi bi-facebook fs-5 me-3"></i>
-          <i class="bi bi-linkedin fs-5 me-4"></i>
-          <router-link to="/contact" class="btn btn-outline-dark">Contact Us</router-link>
-        </div>
-      </div>
-    </nav>
+    <!-- NAVIGATION BAR -->
+    <section class="navbar-section">
+      <NavBar />
+    </section>
 
     <!-- HERO SECTION -->
     <header
@@ -87,8 +64,14 @@
       <HouseSlider />
     </section>
 
+    <!-- CUSTOMER TESTIMONIAL SECTION -->
     <section class="customer-section">
-       <CustomerFeedback />
+      <CustomerFeedback />
+    </section>
+
+    <!-- FOOTER SECTION -->
+    <section class="footer-section">
+      <SiteFooter />
     </section>
   </div>
 </template>
@@ -96,10 +79,13 @@
 <script>
 import HouseSlider from '@/components/HouseSlider.vue';
 import CustomerFeedback from '@/components/CustomerFeedback.vue';
-
+import NavBar from '@/components/NavBar.vue';
+import SiteFooter from '@/components/SiteFooter.vue';
 export default {
   name: 'HomePage',
   components: {
+    NavBar,
+    SiteFooter,
     HouseSlider,
     CustomerFeedback
   },
@@ -180,26 +166,6 @@ export default {
 </script>
 
 <style scoped>
-/* Navbar */
-.nav-tall {
-  min-height: 120px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-  background-color: #fff;
-}
-
-.logo-img {
-  height: auto;
-  width: 270px;
-  max-width: 100%;
-  object-fit: contain;
-  display: block;
-  margin: 0 auto;
-}
-
 /* Hero Section */
 .hero-section {
   background-size: cover;

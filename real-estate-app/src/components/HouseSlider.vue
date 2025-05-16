@@ -85,7 +85,7 @@ export default {
 }
 
 .section-title {
-  font-size: 2.2rem;
+  font-size: 2.8rem;
   font-weight: 700;
 }
 
@@ -95,7 +95,7 @@ export default {
 }
 
 .section-subtitle {
-  font-size: 1rem;
+  font-size: 1.2 rem;
   color: #666;
   margin-top: 0.5rem;
 }
@@ -117,7 +117,7 @@ export default {
 }
 
 .project-card img {
-  height: 320px;
+  height: 400px;
   width: 100%;
   object-fit: cover;
   border-radius: 12px 12px 0 0;
