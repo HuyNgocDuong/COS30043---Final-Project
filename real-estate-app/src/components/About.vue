@@ -3,12 +3,12 @@
     <!-- NAVIGATION BAR -->
     <NavBar />
 
-    <!-- BANNER IMAGE SECTION (moved to top) -->
+    <!-- BANNER IMAGE SECTION -->
     <section class="about-banner text-center my-5">
       <img src="@/assets/banner.png" alt="Urban Haven Showcase" class="img-fluid rounded shadow banner-image" />
     </section>
 
-   <!-- OUR STORY SECTION -->
+    <!-- OUR STORY SECTION -->
     <section class="our-story-section py-5">
       <div class="container">
         <h2 class="text-center fw-bold mb-4">Our Story</h2>
@@ -21,7 +21,7 @@
               Founded in 2015, Urban Haven began with a passion to create more than just houses, we set out to build homes, communities, and lasting relationships.
             </p>
             <p>
-              Our dedicated team combines modern design principles with deep market insight, offering clients tailored solutions whether buying, selling, or investing. 
+              Our dedicated team combines modern design principles with deep market insight, offering clients tailored solutions whether buying, selling, or investing.
               With every project, we aim to deliver warmth, trust, and architectural excellence.
             </p>
             <p>
@@ -31,7 +31,6 @@
         </div>
       </div>
     </section>
-
 
     <!-- OUR SERVICES SECTION -->
     <section class="services-section text-white py-5">
@@ -64,7 +63,7 @@
     </section>
 
     <!-- MEET OUR TEAM SECTION -->
-    <section class="team-section py-5 ">
+    <section class="team-section py-5">
       <div class="container">
         <h2 class="text-center fw-bold mb-5">Meet Our Team</h2>
         <div class="row justify-content-center g-4">
@@ -77,11 +76,57 @@
       </div>
     </section>
 
+    <!-- USER INTERACTION SECTION -->
+    <section class="user-interaction-section py-5 bg-light">
+      <div class="container">
+        <h2 class="text-center fw-bold mb-4">About This Application</h2>
+        <p class="text-center mb-4">
+          Urban Haven is a real estate platform built with Vue.js, offering users a seamless experience to browse, compare, and book properties.
+        </p>
+
+        <div class="row justify-content-center mb-4">
+          <div class="col-md-6">
+            <form @submit.prevent>
+              <div class="mb-3">
+                <label for="firstName" class="form-label">First Name</label>
+                <input type="text" id="firstName" class="form-control" v-model="firstName" />
+              </div>
+              <div class="mb-3">
+                <label for="lastName" class="form-label">Last Name</label>
+                <input type="text" id="lastName" class="form-control" v-model="lastName" />
+              </div>
+            </form>
+            <p v-if="fullName" class="text-success mt-3 fs-5 text-center">
+              Welcome, {{ fullName }}! We're excited to help you find your next home.
+            </p>
+          </div>
+        </div>
+
+        <div class="row justify-content-center text-center mb-4">
+          <div class="col-md-6">
+            <label class="form-check-label me-3">Choose your vibe:</label>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" id="mountain" value="mountain" v-model="selectedImage" />
+              <label class="form-check-label" for="mountain">Mountain</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" id="ocean" value="ocean" v-model="selectedImage" />
+              <label class="form-check-label" for="ocean">Ocean</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="text-center">
+          <img v-if="selectedImage === 'mountain'" src="@/assets/mountain.png" alt="Mountain View" class="img-fluid rounded shadow" style="max-width: 500px;" />
+          <img v-if="selectedImage === 'ocean'" src="@/assets/ocean.png" alt="Ocean View" class="img-fluid rounded shadow" style="max-width: 500px;" />
+        </div>
+      </div>
+    </section>
+
     <!-- FOOTER SECTION -->
     <SiteFooter />
   </div>
 </template>
-
 
 <script>
 import NavBar from '@/components/NavBar.vue'
@@ -92,6 +137,19 @@ export default {
   components: {
     NavBar,
     SiteFooter
+  },
+  data() {
+    return {
+      firstName: '',
+      lastName: '',
+      selectedImage: ''
+    }
+  },
+  computed: {
+    fullName() {
+      const name = `${this.firstName} ${this.lastName}`.trim()
+      return name.length > 1 ? name : ''
+    }
   }
 }
 </script>
@@ -113,9 +171,9 @@ export default {
 }
 
 .about-banner {
-   margin: 0;
+  margin: 0;
   padding: 0;
-  width: 100vw; /* full viewport width */
+  width: 100vw;
   overflow: hidden;
   position: relative;
   left: 50%;
@@ -125,11 +183,10 @@ export default {
 }
 
 .banner-image {
-    width: 100%;
+  width: 100%;
   height: auto;
-  display: block; 
+  display: block;
 }
-
 
 .services-section {
   background-color: #f8f9fa;
@@ -167,5 +224,4 @@ export default {
 .team-img:hover {
   transform: scale(1.05);
 }
-
 </style>
