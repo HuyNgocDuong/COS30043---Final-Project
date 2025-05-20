@@ -1,0 +1,82 @@
+[
+  {
+    "id": 1,
+    "title": "Modern Villa",
+    "location": "Melbourne",
+    "price": 950000,
+    "type": "Villa",
+    "image": "house 1.png"
+  },
+  {
+    "id": 2,
+    "title": "City Apartment",
+    "location": "Sydney",
+    "price": 750000,
+    "type": "Apartment",
+    "image": "house 2.png"
+  },
+  {
+    "id": 3,
+    "title": "Coastal Retreat",
+    "location": "Brisbane",
+    "price": 850000,
+    "type": "House",
+    "image": "house 3.png"
+  },
+  {
+    "id": 4,
+    "title": "Luxury Mansion",
+    "location": "Melbourne",
+    "price": 1250000,
+    "type": "Villa",
+    "image": "house 4.png"
+  },
+  {
+    "id": 5,
+    "title": "Suburban Home",
+    "location": "Sydney",
+    "price": 680000,
+    "type": "House",
+    "image": "house 5.png"
+  },
+  {
+    "id": 6,
+    "title": "Studio Apartment",
+    "location": "Brisbane",
+    "price": 420000,
+    "type": "Apartment",
+    "image": "house 6.png"
+  },
+  {
+    "id": 7,
+    "title": "Family House",
+    "location": "Melbourne",
+    "price": 790000,
+    "type": "House",
+    "image": "house 7.png"
+  },
+  {
+    "id": 8,
+    "title": "Urban Loft",
+    "location": "Sydney",
+    "price": 810000,
+    "type": "Apartment",
+    "image": "house 8.png"
+  },
+  {
+    "id": 9,
+    "title": "Mountain Escape",
+    "location": "Brisbane",
+    "price": 880000,
+    "type": "Villa",
+    "image": "house 9.png"
+  },
+  {
+    "id": 10,
+    "title": "Country Cottage",
+    "location": "Melbourne",
+    "price": 670000,
+    "type": "House",
+    "image": "house 10.png"
+  }
+]

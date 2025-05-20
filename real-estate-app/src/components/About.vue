@@ -84,44 +84,46 @@
           Urban Haven is a real estate platform built with Vue.js, offering users a seamless experience to browse, compare, and book properties.
         </p>
 
-        <div class="row justify-content-center mb-4">
-          <div class="col-md-6">
-            <form @submit.prevent>
-              <div class="mb-3">
-                <label for="firstName" class="form-label">First Name</label>
-                <input type="text" id="firstName" class="form-control" v-model="firstName" />
-              </div>
-              <div class="mb-3">
-                <label for="lastName" class="form-label">Last Name</label>
-                <input type="text" id="lastName" class="form-control" v-model="lastName" />
-              </div>
-            </form>
-            <p v-if="fullName" class="text-success mt-3 fs-5 text-center">
-              Welcome, {{ fullName }}! We're excited to help you find your next home.
-            </p>
-          </div>
-        </div>
-
-        <div class="row justify-content-center text-center mb-4">
-          <div class="col-md-6">
-            <label class="form-check-label me-3">Choose your vibe:</label>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" id="mountain" value="mountain" v-model="selectedImage" />
-              <label class="form-check-label" for="mountain">Mountain</label>
+      <!--FORM INPUT -->
+      <div class="row justify-content-center mb-4">
+        <div class="col-md-6">
+          <form @submit.prevent>
+            <div class="mb-3">
+              <label for="firstName" class="form-label">First Name</label>
+              <input type="text" id="firstName" class="form-control" v-model="firstName" />
             </div>
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" id="ocean" value="ocean" v-model="selectedImage" />
-              <label class="form-check-label" for="ocean">Ocean</label>
+            <div class="mb-3">
+              <label for="lastName" class="form-label">Last Name</label>
+              <input type="text" id="lastName" class="form-control" v-model="lastName" />
             </div>
-          </div>
-        </div>
-
-        <div class="text-center">
-          <img v-if="selectedImage === 'mountain'" src="@/assets/mountain.png" alt="Mountain View" class="img-fluid rounded shadow" style="max-width: 500px;" />
-          <img v-if="selectedImage === 'ocean'" src="@/assets/ocean.png" alt="Ocean View" class="img-fluid rounded shadow" style="max-width: 500px;" />
+          </form>
+          <p v-if="fullName" class="text-success mt-3 fs-5 text-center">
+            Welcome, {{ fullName }}! We're excited to help you find your next home.
+          </p>
         </div>
       </div>
-    </section>
+
+      <!--VIBE PICTURE-->
+      <div class="row justify-content-center text-center mb-4">
+        <div class="col-md-6">
+          <label class="form-check-label me-3">Choose your vibe:</label>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="mountain" value="mountain" v-model="selectedImage" />
+            <label class="form-check-label" for="mountain">Mountain</label>
+           </div>
+          <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" id="ocean" value="ocean" v-model="selectedImage" />
+            <label class="form-check-label" for="ocean">Ocean</label>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <img v-if="selectedImage === 'mountain'" :src="require('@/assets/mountain.png')" alt="Mountain View" class="img-fluid rounded shadow" style="max-width: 500px;" />
+        <img v-if="selectedImage === 'ocean'" :src="require('@/assets/ocean.png')" alt="Ocean View" class="img-fluid rounded shadow" style="max-width: 500px;" />
+      </div>
+    </div>
+  </section>
 
     <!-- FOOTER SECTION -->
     <SiteFooter />
