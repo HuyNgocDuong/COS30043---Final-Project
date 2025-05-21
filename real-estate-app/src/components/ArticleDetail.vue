@@ -62,33 +62,32 @@ export default {
     return {
       article: null,
       fallbackImage: 'https://via.placeholder.com/850x400?text=No+Image',
-      isFavorited: false,
-      rating: 0
+      rating: 0,
+      userEmail: localStorage.getItem('user_email') || null
     };
   },
-    mounted() {
+  mounted() {
     const allArticles = JSON.parse(localStorage.getItem('articles')) || [];
     const encodedUrl = this.$route.params.url;
     const decodedUrl = decodeURIComponent(encodedUrl);
 
     this.article = allArticles.find((a) => a.url === decodedUrl);
+    if (!this.article || !this.userEmail) return;
 
-    if (!this.article) return;
-
-  
-    // Load rating
-    const ratings = JSON.parse(localStorage.getItem('ratings')) || {};
-    if (ratings[this.article.url]) {
-        this.rating = ratings[this.article.url];
-    }
-    },
+    const userRatingsKey = `ratings_${this.userEmail}`;
+    const userRatings = JSON.parse(localStorage.getItem(userRatingsKey)) || {};
+    this.rating = userRatings[this.article.url] || 0;
+  },
   methods: {
-    
     setRating(value) {
       this.rating = value;
-      const ratings = JSON.parse(localStorage.getItem('ratings')) || {};
-      ratings[this.article.url] = value;
-      localStorage.setItem('ratings', JSON.stringify(ratings));
+
+      if (!this.userEmail || !this.article) return;
+
+      const userRatingsKey = `ratings_${this.userEmail}`;
+      const userRatings = JSON.parse(localStorage.getItem(userRatingsKey)) || {};
+      userRatings[this.article.url] = value;
+      localStorage.setItem(userRatingsKey, JSON.stringify(userRatings));
     }
   }
 };

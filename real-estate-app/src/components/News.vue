@@ -5,23 +5,15 @@
       <NavBar />
     </section>
 
-    <!-- Banner Section -->
-    <div class="position-relative w-100 mb-5 mt-5">
-      <img
-        src="@/assets/house 8.png"
-        alt="News Banner"
-        class="img-fluid w-100 shadow"
-        style="max-height: 500px; object-fit: cover;"
-      />
-      <div
-        class="position-absolute top-50 start-50 translate-middle text-center text-white"
-        style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);"
-      >
+    <!-- Hero Banner -->
+    <div class="news-hero-section d-flex justify-content-center align-items-center text-center position-relative mb-5 mt-5">
+      <div class="news-hero-text text-white px-3">
         <h2 class="fw-bold display-4">Latest News</h2>
         <p class="lead">Stay updated with real estate insights and headlines</p>
       </div>
     </div>
 
+    <!-- Main Content -->
     <div class="container pb-5">
       <!-- Search Filters -->
       <div class="card p-3 mb-4 shadow-sm">
@@ -86,7 +78,6 @@
               >
                 View Details
               </router-link>
-
             </div>
           </div>
         </div>
@@ -95,7 +86,7 @@
       <div v-else-if="!loading" class="text-center text-muted">No articles match your search.</div>
     </div>
 
-    <!-- Footer Section -->
+    <!-- Footer -->
     <section class="footer-section">
       <SiteFooter />
     </section>
@@ -105,6 +96,7 @@
 <script>
 import NavBar from '@/components/NavBar.vue';
 import SiteFooter from '@/components/SiteFooter.vue';
+import articles from '@/assets/articles.json';
 
 export default {
   name: 'NewsPage',
@@ -135,7 +127,7 @@ export default {
         (!this.filters.title || a.title?.toLowerCase().includes(this.filters.title.toLowerCase())) &&
         (!this.filters.content || a.content?.toLowerCase().includes(this.filters.content.toLowerCase())) &&
         (!this.filters.category || a.category === this.filters.category) &&
-        (!this.filters.date || a.publishedAt.startsWith(this.filters.date))
+        (!this.filters.date || a.publishedAt?.startsWith(this.filters.date))
       );
 
       if (this.showFavoritesOnly) {
@@ -149,26 +141,21 @@ export default {
     this.fetchNews();
   },
   methods: {
-    async fetchNews() {
+    fetchNews() {
       this.loading = true;
       this.error = null;
+
       try {
-        const response = await fetch(
-          'https://newsapi.org/v2/everything?q=real+estate+australia&language=en&sortBy=publishedAt&apiKey=fa459d88617643ed931e9340451cfcee'
-        );
-        const data = await response.json();
-        if (data.status === 'ok') {
-          this.articles = data.articles.map((a, i) => ({
-            ...a,
-            category: this.categories[i % this.categories.length]
-          }));
-          localStorage.setItem('articles', JSON.stringify(this.articles));
-        } else {
-          this.error = data.message || 'Failed to load news';
-        }
+        this.articles = articles.map((a, i) => ({
+          ...a,
+          urlToImage: require(`@/assets/${a.urlToImage}`),
+          category: a.category || this.categories[i % this.categories.length]
+        }));
+
+        localStorage.setItem('articles', JSON.stringify(this.articles));
       } catch (err) {
-        console.error('Fetch error:', err);
-        this.error = 'Network error. Please check your internet connection or API key.';
+        console.error('Local import error:', err);
+        this.error = 'Unable to load local article data.';
       } finally {
         this.loading = false;
       }
@@ -188,3 +175,35 @@ export default {
   }
 };
 </script>
+
+
+<style scoped>
+.news-hero-section {
+  background-image: url('@/assets/house 8.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 70vh;
+  width: 100%;
+  position: relative;
+}
+
+.news-hero-text {
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* Responsive */
+@media (max-width: 576px) {
+  .news-hero-section {
+    height: 50vh;
+  }
+
+  .news-hero-text h2 {
+    font-size: 1.75rem;
+  }
+
+  .news-hero-text p {
+    font-size: 1rem;
+  }
+}
+</style>

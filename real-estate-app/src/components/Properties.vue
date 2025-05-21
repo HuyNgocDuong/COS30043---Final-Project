@@ -5,18 +5,9 @@
       <NavBar />
     </section>
 
-    <!-- Banner -->
-    <div class="position-relative w-100 mb-5 mt-5">
-      <img
-        src="@/assets/house 5.png"
-        alt="Featured Banner"
-        class="img-fluid w-100 shadow"
-        style="max-height: 500px; object-fit: cover;"
-      />
-      <div
-        class="position-absolute top-50 start-50 translate-middle text-center text-white"
-        style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);"
-      >
+    <!-- Hero Banner Section -->
+    <div class="properties-hero-section d-flex justify-content-center align-items-center text-center position-relative mb-5 mt-5">
+      <div class="properties-hero-text text-white px-3">
         <h2 class="fw-bold display-4">Explore Properties</h2>
         <p class="lead">Find your dream home from our curated listings</p>
       </div>
@@ -155,6 +146,37 @@ export default {
 </script>
 
 <style scoped>
+/* Hero Banner */
+.properties-hero-section {
+  background-image: url('@/assets/house 5.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 70vh;
+  width: 100%;
+  position: relative;
+}
+
+.properties-hero-text {
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* Responsive adjustments */
+@media (max-width: 576px) {
+  .properties-hero-section {
+    height: 50vh;
+  }
+
+  .properties-hero-text h2 {
+    font-size: 1.75rem;
+  }
+
+  .properties-hero-text p {
+    font-size: 1rem;
+  }
+}
+
+/* Filter controls */
 .form-control:focus,
 .form-select:focus {
   border-color: #6c63ff;

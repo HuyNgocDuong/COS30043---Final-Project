@@ -1,0 +1,82 @@
+[
+  {
+    "title": "Housing Market Sees Record Growth in 2025",
+    "content": "The Australian housing market is seeing unprecedented growth as demand surges across urban areas.",
+    "url": "https://example.com/article/1",
+    "urlToImage": "article 1.png",
+    "publishedAt": "2025-05-01",
+    "category": "Housing"
+  },
+  {
+    "title": "Sydney Property Prices Hit All-Time High",
+    "content": "Property values in Sydney reach a record average, driven by low interest rates and strong demand.",
+    "url": "https://example.com/article/2",
+    "urlToImage": "article 2.png",
+    "publishedAt": "2025-04-27",
+    "category": "Finance"
+  },
+  {
+    "title": "Sustainable Housing Projects on the Rise",
+    "content": "Green buildings and sustainable communities are being prioritized in new developments.",
+    "url": "https://example.com/article/3",
+    "urlToImage": "article 3.png",
+    "publishedAt": "2025-04-23",
+    "category": "Technology"
+  },
+  {
+    "title": "Affordable Housing Plan Unveiled by Government",
+    "content": "A new policy initiative aims to increase the availability of affordable homes nationwide.",
+    "url": "https://example.com/article/4",
+    "urlToImage": "article 4.png",
+    "publishedAt": "2025-04-20",
+    "category": "Policy"
+  },
+  {
+    "title": "Melbourne Expands Urban Development Zones",
+    "content": "The City of Melbourne announced a major expansion of development areas to address housing needs.",
+    "url": "https://example.com/article/5",
+    "urlToImage": "article 5.png",
+    "publishedAt": "2025-04-18",
+    "category": "Infrastructure"
+  },
+  {
+    "title": "First-Time Home Buyer Grants Extended",
+    "content": "The government has extended financial support programs for new home buyers through 2025.",
+    "url": "https://example.com/article/6",
+    "urlToImage": "article 6.png",
+    "publishedAt": "2025-04-15",
+    "category": "Finance"
+  },
+  {
+    "title": "Remote Work Influences Property Trends",
+    "content": "More Australians are moving to regional areas as remote work becomes more permanent.",
+    "url": "https://example.com/article/7",
+    "urlToImage": "article 7.png",
+    "publishedAt": "2025-04-12",
+    "category": "Housing"
+  },
+  {
+    "title": "Brisbane Skyline Set for Transformation",
+    "content": "Several new high-rise residential towers are planned for Brisbane’s growing skyline.",
+    "url": "https://example.com/article/8",
+    "urlToImage": "article 8.png",
+    "publishedAt": "2025-04-10",
+    "category": "Infrastructure"
+  },
+  {
+    "title": "Property Investors Return to Market",
+    "content": "After a quiet 2024, investors are again active in metropolitan and suburban housing sectors.",
+    "url": "https://example.com/article/9",
+    "urlToImage": "article 9.png",
+    "publishedAt": "2025-04-08",
+    "category": "Finance"
+  },
+  {
+    "title": "AI Predicts Real Estate Price Movements",
+    "content": "New AI tools are helping forecast housing prices based on real-time data trends.",
+    "url": "https://example.com/article/10",
+    "urlToImage": "article 10.png",
+    "publishedAt": "2025-04-05",
+    "category": "Technology"
+  }
+]

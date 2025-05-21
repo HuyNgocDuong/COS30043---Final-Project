@@ -20,7 +20,7 @@
     </div>
 
     <!-- Image -->
-    <div class="text-center mb-4">
+    <div class="property-image-wrapper mb-4">
       <img
         :src="require(`@/assets/${property.image}`)"
         alt="Property Image"
@@ -63,4 +63,18 @@ export default {
 .text-purple {
   color: #a259ff;
 }
+
+.property-image-wrapper {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 16px;
+}
+
+.property-image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  max-height: 600px;
+}
+
 </style>

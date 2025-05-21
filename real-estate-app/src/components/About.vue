@@ -3,10 +3,13 @@
     <!-- NAVIGATION BAR -->
     <NavBar />
 
-    <!-- BANNER IMAGE SECTION -->
-    <section class="ratio ratio-16x9 about-wrapper">
-      <img src="@/assets/banner.png" alt="Urban Haven Showcase" class="img-fluid object-fit-cover" />
-    </section>
+    <!-- HERO-LIKE BANNER SECTION -->
+    <div class="about-hero-section d-flex justify-content-center align-items-center text-center position-relative mb-5">
+      <div class="about-hero-text text-white px-3">
+        <h2 class="fw-bold display-4">About Urban Haven</h2>
+        <p class="lead">Building Homes, Communities, and Trust Since 2015</p>
+      </div>
+    </div>
 
     <!-- OUR STORY SECTION -->
     <section class="our-story-section py-5">
@@ -14,11 +17,11 @@
         <h2 class="text-center fw-bold mb-4">Our Story</h2>
         <div class="row align-items-center">
           <div class="col-md-6 mb-4 mb-md-0">
-            <img src="@/assets/house 4.png" alt="Our Story" class="img-fluid img-fluid rounded shadow" />
+            <img src="@/assets/house 4.png" alt="Our Story" class="img-fluid rounded shadow" />
           </div>
           <div class="col-md-6">
             <p>
-              Founded in 2015, Urban Haven began with a passion to create more than just houses, we set out to build homes, communities, and lasting relationships.
+              Founded in 2015, Urban Haven began with a passion to create more than just houses—we set out to build homes, communities, and lasting relationships.
             </p>
             <p>
               Our dedicated team combines modern design principles with deep market insight, offering clients tailored solutions whether buying, selling, or investing.
@@ -84,46 +87,48 @@
           Urban Haven is a real estate platform built with Vue.js, offering users a seamless experience to browse, compare, and book properties.
         </p>
 
-      <!--FORM INPUT -->
-      <div class="row justify-content-center mb-4">
-        <div class="col-md-6">
-          <form @submit.prevent>
-            <div class="mb-3">
-              <label for="firstName" class="form-label">First Name</label>
-              <input type="text" id="firstName" class="form-control" v-model="firstName" />
-            </div>
-            <div class="mb-3">
-              <label for="lastName" class="form-label">Last Name</label>
-              <input type="text" id="lastName" class="form-control" v-model="lastName" />
-            </div>
-          </form>
-          <p v-if="fullName" class="text-success mt-3 fs-5 text-center">
-            Welcome, {{ fullName }}! We're excited to help you find your next home.
-          </p>
+        <!-- FORM INPUT -->
+        <div class="row justify-content-center mb-4">
+          <div class="col-md-6">
+            <form @submit.prevent>
+              <div class="mb-3">
+                <label for="firstName" class="form-label">First Name</label>
+                <input type="text" id="firstName" class="form-control" v-model="firstName" />
+              </div>
+              <div class="mb-3">
+                <label for="lastName" class="form-label">Last Name</label>
+                <input type="text" id="lastName" class="form-control" v-model="lastName" />
+              </div>
+            </form>
+            <p v-if="fullName" class="text-success mt-3 fs-5 text-center">
+              Welcome, {{ fullName }}! We're excited to help you find your next home.
+            </p>
+          </div>
         </div>
-      </div>
 
-      <!--VIBE PICTURE-->
-      <div class="row justify-content-center text-center mb-4">
-        <div class="col-md-6">
-          <label class="form-check-label me-3">Choose your vibe:</label>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="mountain" value="mountain" v-model="selectedImage" />
-            <label class="form-check-label" for="mountain">Mountain</label>
-           </div>
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" id="ocean" value="ocean" v-model="selectedImage" />
-            <label class="form-check-label" for="ocean">Ocean</label>
+        <!-- VIBE PICTURE -->
+        <div class="row justify-content-center text-center mb-4">
+          <div class="col-md-6">
+            <label class="form-check-label me-3">Choose your vibe:</label>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" id="mountain" value="mountain" v-model="selectedImage" />
+              <label class="form-check-label" for="mountain">Mountain</label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" id="ocean" value="ocean" v-model="selectedImage" />
+              <label class="form-check-label" for="ocean">Ocean</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row justify-content-center">
+          <div class="col-12 col-sm-10 col-md-8 col-lg-6 text-center">
+            <img v-if="selectedImage === 'mountain'" :src="require('@/assets/mountain.png')" alt="Mountain View" class="img-fluid rounded shadow vibe-img" />
+            <img v-if="selectedImage === 'ocean'" :src="require('@/assets/ocean.png')" alt="Ocean View" class="img-fluid rounded shadow vibe-img" />
           </div>
         </div>
       </div>
-
-      <div class="text-center">
-        <img v-if="selectedImage === 'mountain'" :src="require('@/assets/mountain.png')" alt="Mountain View" class="img-fluid img-fluid rounded shadow" style="max-width: 500px;" />
-        <img v-if="selectedImage === 'ocean'" :src="require('@/assets/ocean.png')" alt="Ocean View" class="img-fluid img-fluid rounded shadow" style="max-width: 500px;" />
-      </div>
-    </div>
-  </section>
+    </section>
 
     <!-- FOOTER SECTION -->
     <SiteFooter />
@@ -157,6 +162,21 @@ export default {
 </script>
 
 <style scoped>
+.about-hero-section {
+  background-image: url('@/assets/banner.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 70vh;
+  width: 100%;
+  position: relative;
+}
+
+.about-hero-text {
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+/* About section */
 .our-story-section {
   background-color: #ffffff;
   color: #333;
@@ -170,31 +190,6 @@ export default {
 .our-story-section p {
   font-size: 1.1rem;
   line-height: 1.8;
-}
-
-.about-banner {
-  margin: 0;
-  padding: 0;
-  width: 100vw;
-  overflow: hidden;
-  position: relative;
-  left: 50%;
-  right: 50%;
-  margin-left: -50vw;
-  margin-right: -50vw;
-}
-
-.banner-wrapper {
-  width: 100%;
-  overflow: hidden;
-}
-
-.banner-image {
-  width: 100%;
-  height: auto;
-  display: block;
-  object-fit: cover;
-  border-radius: 0;
 }
 
 .services-section {
@@ -234,6 +229,14 @@ export default {
   transform: scale(1.05);
 }
 
+.vibe-img {
+  width: 100%;
+  height: auto;
+  max-width: 500px;
+  object-fit: cover;
+}
+
+/* Responsive fixes */
 @media (max-width: 576px) {
   h2 {
     font-size: 1.75rem !important;
@@ -271,15 +274,21 @@ export default {
     padding: 1rem !important;
   }
 
-  .banner-image {
-    height: auto !important;
-    max-height: 250px;
-    object-fit: cover;
+  .about-hero-section {
+    height: 50vh;
   }
 
-  .about-wrapper.ratio-16x9 {
-    aspect-ratio: 16 / 10;
+  .about-hero-text h2 {
+    font-size: 1.75rem;
+  }
+
+  .about-hero-text p {
+    font-size: 1rem;
+  }
+
+  .vibe-img {
+    max-width: 100%;
+    padding: 0 1rem;
   }
 }
-
 </style>

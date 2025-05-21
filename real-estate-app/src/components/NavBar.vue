@@ -44,10 +44,11 @@
 
         <!-- Right Buttons -->
         <div class="d-flex flex-column flex-lg-row align-items-center gap-2 mt-3 mt-lg-0">
-          <router-link to="/auth?mode=signup" class="btn btn-outline-dark w-100 w-lg-auto text-nowrap">Sign Up</router-link>
-          <router-link to="/auth?mode=login" class="btn btn-outline-dark w-100 w-lg-auto text-nowrap">Login</router-link>
-          <router-link to="/contact" class="btn btn-outline-dark w-100 w-lg-auto text-nowrap">Contact Us</router-link>
+          <a href="https://mercury.swin.edu.au/cos30043/s104471956/FinalProject/php/signup.php" class="btn btn-outline-dark w-100 w-lg-auto text-nowrap">Sign Up</a>
+          <a href="https://mercury.swin.edu.au/cos30043/s104471956/FinalProject/php/login.php" class="btn btn-outline-dark w-100 w-lg-auto text-nowrap">Login</a>
+          <a href="https://mercury.swin.edu.au/cos30043/s104471956/FinalProject/php/contact.php" class="btn btn-outline-dark w-100 w-lg-auto text-nowrap">Contact Us</a>
         </div>
+
       </div>
     </div>
   </nav>
