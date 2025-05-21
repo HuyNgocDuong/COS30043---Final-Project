@@ -10,7 +10,7 @@
       class="hero-section d-flex justify-content-center align-items-center text-center"
       :style="{ backgroundImage: `url(${require('@/assets/home.png')})` }"
     >
-      <div class="hero-text" :class="{ 'hero-visible': heroVisible }" v-show="heroVisible">
+      <div : class="hero-text { 'hero-visible': heroVisible }" v-show="heroVisible">
         <h1 class="hero-title mb-3">Find Your Dream House</h1>
         <div class="hero-divider mb-3"></div>
         <p class="hero-subtext">
@@ -23,7 +23,7 @@
     <section :class="['brand-about-section', { visible: isVisible }]" ref="aboutSection">
       <div class="container about-container">
         <div class="about-image-wrapper">
-          <img class="img-fluid" src="@/assets/house 1.png" alt="Modern House" class="about-image" />
+          <img src="@/assets/house 1.png" alt="Modern House" class="img-fluid about-image" />
         </div>
 
         <div class="about-content">

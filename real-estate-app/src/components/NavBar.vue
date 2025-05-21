@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <!-- Logo (Mobile view) -->
       <router-link to="/" class="navbar-brand d-lg-none">
-        <img class="img-fluid" src="@/assets/logo.png" alt="Urban Haven Logo" class="logo-img-small" />
+        <img src="@/assets/logo.png" alt="Urban Haven Logo" class="img-fluid logo-img-small" />
       </router-link>
 
       <!-- Toggler (hamburger) -->
@@ -39,7 +39,7 @@
 
         <!-- Centered Logo (Large screens only) -->
         <div class="navbar-logo d-none d-lg-block position-absolute top-50 start-50 translate-middle">
-          <img class="img-fluid" src="@/assets/logo.png" alt="Urban Haven Logo" class="logo-img" />
+          <img src="@/assets/logo.png" alt="Urban Haven Logo" class="img-fluid logo-img" />
         </div>
 
         <!-- Right Buttons -->

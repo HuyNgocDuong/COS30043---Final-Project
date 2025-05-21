@@ -33,8 +33,7 @@
             <i
               v-for="star in 5"
               :key="star"
-              class="bi"
-              :class="star <= rating ? 'bi-star-fill text-warning' : 'bi-star text-secondary'"
+              : class="bi star <= rating ? 'bi-star-fill text-warning' : 'bi-star text-secondary'"
               style="cursor: pointer; font-size: 1.5rem;"
               @click="setRating(star)"
             ></i>

@@ -5,7 +5,7 @@
 
     <!-- BANNER IMAGE SECTION -->
     <section class="about-banner text-center my-5">
-      <img class="img-fluid" src="@/assets/banner.png" alt="Urban Haven Showcase" class="img-fluid rounded shadow banner-image" />
+      <img src="@/assets/banner.png" alt="Urban Haven Showcase" class="img-fluid img-fluid rounded shadow banner-image" />
     </section>
 
     <!-- OUR STORY SECTION -->
@@ -14,7 +14,7 @@
         <h2 class="text-center fw-bold mb-4">Our Story</h2>
         <div class="row align-items-center">
           <div class="col-md-6 mb-4 mb-md-0">
-            <img class="img-fluid" src="@/assets/house 4.png" alt="Our Story" class="img-fluid rounded shadow" />
+            <img src="@/assets/house 4.png" alt="Our Story" class="img-fluid img-fluid rounded shadow" />
           </div>
           <div class="col-md-6">
             <p>
@@ -68,7 +68,7 @@
         <h2 class="text-center fw-bold mb-5">Meet Our Team</h2>
         <div class="row justify-content-center g-4">
           <div class="col-6 col-md-4 col-lg-2 text-center" v-for="i in 5" :key="i">
-            <img class="img-fluid" :src="require(`@/assets/agent ${i}.png`)" :alt="`Agent ${i}`" class="team-img mb-3" />
+            <img :src="require(`@/assets/agent ${i}.png`)" :alt="`Agent ${i}`" class="img-fluid team-img mb-3" />
             <h6 class="fw-bold">Agent {{ i }}</h6>
             <p class="text-muted small">Real Estate Specialist</p>
           </div>
@@ -119,8 +119,8 @@
       </div>
 
       <div class="text-center">
-        <img class="img-fluid" v-if="selectedImage === 'mountain'" :src="require('@/assets/mountain.png')" alt="Mountain View" class="img-fluid rounded shadow" style="max-width: 500px;" />
-        <img class="img-fluid" v-if="selectedImage === 'ocean'" :src="require('@/assets/ocean.png')" alt="Ocean View" class="img-fluid rounded shadow" style="max-width: 500px;" />
+        <img v-if="selectedImage === 'mountain'" :src="require('@/assets/mountain.png')" alt="Mountain View" class="img-fluid img-fluid rounded shadow" style="max-width: 500px;" />
+        <img v-if="selectedImage === 'ocean'" :src="require('@/assets/ocean.png')" alt="Ocean View" class="img-fluid img-fluid rounded shadow" style="max-width: 500px;" />
       </div>
     </div>
   </section>

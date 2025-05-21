@@ -24,7 +24,7 @@
           <!-- Star Rating -->
           <div class="text-danger my-2">
             <span v-for="n in 5" :key="n">
-              <i class="fas" :class="n <= testimonial.rating ? 'fa-star' : 'fa-star text-muted'"></i>
+              <i : class="fas n <= testimonial.rating ? 'fa-star' : 'fa-star text-muted'"></i>
             </span>
           </div>
 

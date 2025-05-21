@@ -1,5 +1,5 @@
 <template>
-  <div class="auth-container" :class="{ 'sign-up-mode': isSignUp }">
+  <div : class="auth-container { 'sign-up-mode': isSignUp }">
     <div class="form-wrapper shadow p-5 rounded">
       <h2 class="text-center mb-4">{{ isSignUp ? 'Sign Up' : 'Login' }}</h2>
 

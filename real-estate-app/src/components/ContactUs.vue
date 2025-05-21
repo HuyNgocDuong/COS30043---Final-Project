@@ -86,7 +86,7 @@
 
         <!-- RIGHT: Illustration -->
         <div class="col-lg-6 text-center mt-5 mt-lg-0">
-          <img class="img-fluid" src="@/assets/right_img.png" alt="Illustration" class="img-fluid" style="max-width: 400px;" />
+          <img src="@/assets/right_img.png" alt="Illustration" class="img-fluid img-fluid" style="max-width: 400px;" />
         </div>
       </div>
     </div>
