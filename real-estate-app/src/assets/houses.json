@@ -5,7 +5,15 @@
     "location": "Melbourne",
     "price": 950000,
     "type": "Villa",
-    "image": "house 1.png"
+    "image": "house 1.png",
+    "address": "60 Main St, Abbotsford",
+    "houseType": "V",
+    "schoolsNearby": 3,
+    "councilArea": "Stonnington City Council",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "postcode": "3121",
+    "distance": "1.3 km"
   },
   {
     "id": 2,
@@ -13,7 +21,15 @@
     "location": "Sydney",
     "price": 750000,
     "type": "Apartment",
-    "image": "house 2.png"
+    "image": "house 2.png",
+    "address": "25 George St, Sydney",
+    "houseType": "A",
+    "schoolsNearby": 2,
+    "councilArea": "Sydney City Council",
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "postcode": "2000",
+    "distance": "0.9 km"
   },
   {
     "id": 3,
@@ -21,7 +37,15 @@
     "location": "Brisbane",
     "price": 850000,
     "type": "House",
-    "image": "house 3.png"
+    "image": "house 3.png",
+    "address": "88 Ocean Dr, Brisbane",
+    "houseType": "H",
+    "schoolsNearby": 4,
+    "councilArea": "Brisbane City Council",
+    "bedrooms": 4,
+    "bathrooms": 2,
+    "postcode": "4000",
+    "distance": "2.1 km"
   },
   {
     "id": 4,
@@ -29,7 +53,15 @@
     "location": "Melbourne",
     "price": 1250000,
     "type": "Villa",
-    "image": "house 4.png"
+    "image": "house 4.png",
+    "address": "12 Mansion Rd, Toorak",
+    "houseType": "V",
+    "schoolsNearby": 5,
+    "councilArea": "Stonnington City Council",
+    "bedrooms": 5,
+    "bathrooms": 4,
+    "postcode": "3142",
+    "distance": "3.5 km"
   },
   {
     "id": 5,
@@ -37,7 +69,15 @@
     "location": "Sydney",
     "price": 680000,
     "type": "House",
-    "image": "house 5.png"
+    "image": "house 5.png",
+    "address": "45 Parkside Ave, Parramatta",
+    "houseType": "H",
+    "schoolsNearby": 3,
+    "councilArea": "Parramatta City Council",
+    "bedrooms": 3,
+    "bathrooms": 2,
+    "postcode": "2150",
+    "distance": "2.7 km"
   },
   {
     "id": 6,
@@ -45,7 +85,15 @@
     "location": "Brisbane",
     "price": 420000,
     "type": "Apartment",
-    "image": "house 6.png"
+    "image": "house 6.png",
+    "address": "5 City View St, Fortitude Valley",
+    "houseType": "A",
+    "schoolsNearby": 1,
+    "councilArea": "Brisbane City Council",
+    "bedrooms": 1,
+    "bathrooms": 1,
+    "postcode": "4006",
+    "distance": "1.0 km"
   },
   {
     "id": 7,
@@ -53,7 +101,15 @@
     "location": "Melbourne",
     "price": 790000,
     "type": "House",
-    "image": "house 7.png"
+    "image": "house 7.png",
+    "address": "78 Glenhuntly Rd, Elsternwick",
+    "houseType": "H",
+    "schoolsNearby": 2,
+    "councilArea": "Glen Eira City Council",
+    "bedrooms": 4,
+    "bathrooms": 2,
+    "postcode": "3185",
+    "distance": "2.3 km"
   },
   {
     "id": 8,
@@ -61,7 +117,15 @@
     "location": "Sydney",
     "price": 810000,
     "type": "Apartment",
-    "image": "house 8.png"
+    "image": "house 8.png",
+    "address": "15 Kent St, Millers Point",
+    "houseType": "A",
+    "schoolsNearby": 3,
+    "councilArea": "City of Sydney",
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "postcode": "2000",
+    "distance": "1.4 km"
   },
   {
     "id": 9,
@@ -69,7 +133,15 @@
     "location": "Brisbane",
     "price": 880000,
     "type": "Villa",
-    "image": "house 9.png"
+    "image": "house 9.png",
+    "address": "101 Ridge Rd, Mount Coot-tha",
+    "houseType": "V",
+    "schoolsNearby": 2,
+    "councilArea": "Brisbane City Council",
+    "bedrooms": 4,
+    "bathrooms": 3,
+    "postcode": "4066",
+    "distance": "4.0 km"
   },
   {
     "id": 10,
@@ -77,6 +149,14 @@
     "location": "Melbourne",
     "price": 670000,
     "type": "House",
-    "image": "house 10.png"
+    "image": "house 10.png",
+    "address": "33 Oak Ln, Emerald",
+    "houseType": "H",
+    "schoolsNearby": 1,
+    "councilArea": "Cardinia Shire Council",
+    "bedrooms": 2,
+    "bathrooms": 1,
+    "postcode": "3782",
+    "distance": "5.8 km"
   }
 ]

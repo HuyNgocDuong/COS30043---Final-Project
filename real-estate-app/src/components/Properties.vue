@@ -60,27 +60,33 @@
 
       <!-- Property Cards -->
       <div class="row g-4">
-        <!-- v-if to show when no results -->
+        <!-- Show when no results -->
         <div v-if="filteredHouses.length === 0" class="text-center text-muted">
           No matching properties found.
         </div>
 
-        <!-- v-for with v-on (click), v-bind (:src and :alt) -->
+        <!-- Loop through filtered houses -->
         <div class="col-md-4" v-for="house in filteredHouses" :key="house.id">
-          <div class="card shadow h-100" @click="handleCardClick(house.title)">
+          <div class="card shadow h-100 d-flex flex-column">
             <img
               :src="require(`@/assets/${house.image}`)"
               :alt="house.title"
               class="card-img-top"
               style="height: 300px; object-fit: cover;"
             />
-            <div class="card-body">
+            <div class="card-body d-flex flex-column">
               <h5 class="card-title">{{ house.title }}</h5>
               <p class="card-text">
                 <strong>Location:</strong> {{ house.location }}<br />
                 <strong>Type:</strong> {{ house.type }}<br />
                 <strong>Price:</strong> ${{ house.price.toLocaleString() }}
               </p>
+              <router-link
+                :to="`/property/${house.id}`"
+                class="btn btn-outline-primary mt-auto"
+              >
+                View Details
+              </router-link>
             </div>
           </div>
         </div>
@@ -124,11 +130,6 @@ export default {
           (!this.filters.location || house.location === this.filters.location)
         )
       })
-    }
-  },
-  methods: {
-    handleCardClick(title) {
-      alert(`You clicked on "${title}"`);
     }
   }
 }

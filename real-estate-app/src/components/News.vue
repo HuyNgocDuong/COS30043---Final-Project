@@ -1,20 +1,64 @@
 <template>
   <div>
-    <!--NavBar Section-->
+    <!-- NavBar Section -->
     <section class="navbar-section">
-      <NavBar/>
+      <NavBar />
     </section>
-    <div class="container py-5 mt-">
-      <h2 class="text-center fw-bold mb-4">Latest News</h2>
 
-      <!-- Error or loading state -->
+    <!-- Banner Section -->
+    <div class="position-relative w-100 mb-5 mt-5">
+      <img
+        src="@/assets/house 8.png"
+        alt="News Banner"
+        class="img-fluid w-100 shadow"
+        style="max-height: 500px; object-fit: cover;"
+      />
+      <div
+        class="position-absolute top-50 start-50 translate-middle text-center text-white"
+        style="text-shadow: 2px 2px 8px rgba(0,0,0,0.7);"
+      >
+        <h2 class="fw-bold display-4">Latest News</h2>
+        <p class="lead">Stay updated with real estate insights and headlines</p>
+      </div>
+    </div>
+
+    <div class="container pb-5">
+      <!-- Search Filters -->
+      <div class="card p-3 mb-4 shadow-sm">
+        <div class="row g-3">
+          <div class="col-md-3">
+            <input v-model="filters.title" class="form-control" placeholder="Search by title" />
+          </div>
+          <div class="col-md-3">
+            <input v-model="filters.content" class="form-control" placeholder="Search by content" />
+          </div>
+          <div class="col-md-3">
+            <select v-model="filters.category" class="form-select">
+              <option value="">All Categories</option>
+              <option v-for="cat in categories" :key="cat" :value="cat">{{ cat }}</option>
+            </select>
+          </div>
+          <div class="col-md-3">
+            <input v-model="filters.date" class="form-control" type="date" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Toggle Favorites Button -->
+      <div class="text-end mb-3">
+        <button class="btn btn-outline-danger" @click="showFavoritesOnly = !showFavoritesOnly">
+          {{ showFavoritesOnly ? 'Show All Articles' : 'Show Favorites Only' }}
+        </button>
+      </div>
+
+      <!-- Loading / Error States -->
       <div v-if="loading" class="text-center text-muted">Loading news...</div>
       <div v-if="error" class="alert alert-danger text-center">{{ error }}</div>
 
-      <!-- News articles -->
-      <div class="row g-4" v-if="articles.length > 0">
-        <div class="col-md-4" v-for="(article, index) in articles" :key="index">
-          <div class="card h-100 shadow-sm">
+      <!-- News Cards -->
+      <div class="row g-4" v-if="filteredArticles.length > 0">
+        <div class="col-md-4" v-for="article in filteredArticles" :key="article.url">
+          <div class="card h-100 shadow-sm position-relative">
             <img
               :src="article.urlToImage || fallbackImage"
               class="card-img-top"
@@ -22,34 +66,49 @@
               style="height: 200px; object-fit: cover;"
             />
             <div class="card-body">
-              <h5 class="card-title">{{ article.title }}</h5>
-              <p class="card-text">
-                {{ article.description || 'No description available.' }}
-              </p>
+              <router-link
+                v-if="article.url"
+                :to="{ name: 'ArticleDetail', params: { url: encodeURIComponent(article.url) } }"
+                class="text-decoration-none text-dark"
+              >
+                <h5 class="card-title">{{ article.title }}</h5>
+              </router-link>
+              <p class="card-text mb-1"><strong>Date:</strong> {{ article.publishedAt.slice(0, 10) }}</p>
+              <p class="card-text"><strong>Category:</strong> {{ article.category }}</p>
             </div>
-            <div class="card-footer bg-white border-0 text-end">
-              <a :href="article.url" target="_blank" class="btn btn-sm btn-outline-primary">
-                Read More
-              </a>
+            <div class="card-footer d-flex justify-content-between align-items-center bg-white border-0">
+              <button class="btn btn-sm btn-outline-danger" @click="toggleFavorite(article)">
+                <i :class="isFavorite(article) ? 'bi bi-heart-fill text-danger' : 'bi bi-heart'"></i>
+              </button>
+              <router-link
+                :to="{ name: 'ArticleDetail', params: { url: encodeURIComponent(article.url) } }"
+                class="btn btn-sm btn-outline-primary"
+              >
+                View Details
+              </router-link>
+
             </div>
           </div>
         </div>
       </div>
+
+      <div v-else-if="!loading" class="text-center text-muted">No articles match your search.</div>
     </div>
 
-    <!--Footer Section-->
+    <!-- Footer Section -->
     <section class="footer-section">
-      <SiteFooter/>
+      <SiteFooter />
     </section>
   </div>
 </template>
 
 <script>
-import NavBar from '@/components/NavBar.vue'
-import SiteFooter from '@/components/SiteFooter.vue'
+import NavBar from '@/components/NavBar.vue';
+import SiteFooter from '@/components/SiteFooter.vue';
+
 export default {
   name: 'NewsPage',
-  components:{
+  components: {
     NavBar,
     SiteFooter
   },
@@ -58,8 +117,33 @@ export default {
       articles: [],
       loading: false,
       error: null,
-      fallbackImage: 'https://via.placeholder.com/400x200?text=No+Image'
+      favorites: JSON.parse(localStorage.getItem('favorites')) || [],
+      showFavoritesOnly: false,
+      fallbackImage: 'https://via.placeholder.com/400x200?text=No+Image',
+      filters: {
+        title: '',
+        content: '',
+        category: '',
+        date: ''
+      },
+      categories: ['Housing', 'Finance', 'Technology', 'Policy', 'Infrastructure']
     };
+  },
+  computed: {
+    filteredArticles() {
+      let result = this.articles.filter(a =>
+        (!this.filters.title || a.title?.toLowerCase().includes(this.filters.title.toLowerCase())) &&
+        (!this.filters.content || a.content?.toLowerCase().includes(this.filters.content.toLowerCase())) &&
+        (!this.filters.category || a.category === this.filters.category) &&
+        (!this.filters.date || a.publishedAt.startsWith(this.filters.date))
+      );
+
+      if (this.showFavoritesOnly) {
+        result = result.filter(a => this.favorites.includes(a.url));
+      }
+
+      return result;
+    }
   },
   mounted() {
     this.fetchNews();
@@ -73,19 +157,33 @@ export default {
           'https://newsapi.org/v2/everything?q=real+estate+australia&language=en&sortBy=publishedAt&apiKey=fa459d88617643ed931e9340451cfcee'
         );
         const data = await response.json();
-        console.log('NewsAPI Response:', data); // For debugging
-
         if (data.status === 'ok') {
-          this.articles = data.articles;
+          this.articles = data.articles.map((a, i) => ({
+            ...a,
+            category: this.categories[i % this.categories.length]
+          }));
+          localStorage.setItem('articles', JSON.stringify(this.articles));
         } else {
           this.error = data.message || 'Failed to load news';
         }
       } catch (err) {
-        console.error('Fetch error:', err); // For debugging
+        console.error('Fetch error:', err);
         this.error = 'Network error. Please check your internet connection or API key.';
       } finally {
         this.loading = false;
       }
+    },
+    toggleFavorite(article) {
+      const articleId = article.url;
+      if (this.favorites.includes(articleId)) {
+        this.favorites = this.favorites.filter(f => f !== articleId);
+      } else {
+        this.favorites.push(articleId);
+      }
+      localStorage.setItem('favorites', JSON.stringify(this.favorites));
+    },
+    isFavorite(article) {
+      return this.favorites.includes(article.url);
     }
   }
 };

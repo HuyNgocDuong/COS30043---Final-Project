@@ -11,10 +11,10 @@
       :style="{ backgroundImage: `url(${require('@/assets/home.png')})` }"
     >
       <div class="hero-text" :class="{ 'hero-visible': heroVisible }" v-show="heroVisible">
-        <h1 class="hero-title mb-3">Planning with Heart</h1>
+        <h1 class="hero-title mb-3">Find Your Dream House</h1>
         <div class="hero-divider mb-3"></div>
         <p class="hero-subtext">
-          Woman-Owned Event Planning Company Serving Kansas City and Beyond
+          Trusted Real Estate Experts in Australia - Modern Living Starts Here
         </p>
       </div>
     </header>
@@ -50,8 +50,8 @@
           </div>
 
           <p class="about-description">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-            Lorem Ipsum has been the industry's standard dummy text ever since the 1500s.
+            At Urban Haven, we specialize in connecting individuals and families with properties that perfectly match their lifestyle and goals. With a decade of industry experience, 
+            our dedicated team offers personalized guidance, market insights, and a wide selection of premium homes across Australia. Whether you're buying your first home, upgrading, or investing, 
           </p>
 
           <router-link to="/about" class="btn-learn-more">Learn more</router-link>
@@ -203,8 +203,8 @@ export default {
   font-family: 'Georgia', serif;
   font-size: 3rem;
   font-weight: 500;
-  letter-spacing: 1px;
-  margin-bottom: 20px;
+  color: white;
+  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
 }
 
 .hero-divider {
@@ -215,10 +215,11 @@ export default {
 }
 
 .hero-subtext {
-  font-size: 1.1rem;
-  letter-spacing: 1px;
-  font-family: 'Georgia', serif;
-  max-width: 700px;
+   font-family: 'Georgia', serif;
+  font-size: 1.2rem;
+  font-weight: 400;
+  color: white;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
 /* About Section */
