@@ -20,10 +20,10 @@
     </header>
 
     <!-- ABOUT SECTION -->
-    <section :class="['brand-about-section d-flex align-items-center justify-content-center', { visible: isVisible }]" ref="aboutSection">
-      <div class="container d-flex flex-wrap align-items-center justify-content-center">
+    <section :class="['brand-about-section', { visible: isVisible }]" ref="aboutSection">
+      <div class="container about-container">
         <div class="about-image-wrapper">
-          <img src="@/assets/house 1.png" alt="Modern House" class="about-image" />
+          <img class="img-fluid" src="@/assets/house 1.png" alt="Modern House" class="about-image" />
         </div>
 
         <div class="about-content">
@@ -50,8 +50,9 @@
           </div>
 
           <p class="about-description">
-            At Urban Haven, we specialize in connecting individuals and families with properties that perfectly match their lifestyle and goals. With a decade of industry experience, 
-            our dedicated team offers personalized guidance, market insights, and a wide selection of premium homes across Australia. Whether you're buying your first home, upgrading, or investing, 
+            At Urban Haven, we specialize in connecting individuals and families with properties that perfectly match their lifestyle and goals.
+            With a decade of industry experience, our dedicated team offers personalized guidance, market insights, and a wide selection of premium homes across Australia.
+            Whether you're buying your first home, upgrading, or investing,
           </p>
 
           <router-link to="/about" class="btn-learn-more">Learn more</router-link>
@@ -81,6 +82,7 @@ import HouseSlider from '@/components/HouseSlider.vue';
 import CustomerFeedback from '@/components/CustomerFeedback.vue';
 import NavBar from '@/components/NavBar.vue';
 import SiteFooter from '@/components/SiteFooter.vue';
+
 export default {
   name: 'HomePage',
   components: {
@@ -172,26 +174,19 @@ export default {
   background-position: center;
   background-repeat: no-repeat;
   height: 100vh;
-  width: 100%;
-  margin-top: -120px;
+  width: 100vw;
   position: relative;
   z-index: 0;
   overflow: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
   padding-top: 20vh;
 }
 
 .hero-text {
-  position: relative;
-  z-index: 1;
-  text-align: center;
   color: #fff;
-  padding: 0 2rem;
+  padding: 0 1rem;
   opacity: 0;
   transform: translateY(30px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
+  transition: opacity 0.8s ease, transform 0.8s ease;
 }
 
 .hero-visible {
@@ -203,7 +198,6 @@ export default {
   font-family: 'Georgia', serif;
   font-size: 3rem;
   font-weight: 500;
-  color: white;
   text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.6);
 }
 
@@ -215,10 +209,9 @@ export default {
 }
 
 .hero-subtext {
-   font-family: 'Georgia', serif;
+  font-family: 'Georgia', serif;
   font-size: 1.2rem;
   font-weight: 400;
-  color: white;
   text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
 }
 
@@ -229,38 +222,39 @@ export default {
   transition: all 0.5s ease-out;
 }
 
-.container {
+.about-container {
   max-width: 1200px;
-  gap: 3rem;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row; 
+  gap: 2rem;
+  justify-content: center;
 }
 
 .about-image-wrapper {
   flex: 1;
-  max-width: 550px;
-  height: 500px;
+  max-width: 500px;
+  height: 450px;
+  border-radius: 300px 300px 0 0;
   overflow: hidden;
-  border-top-left-radius: 300px 300px;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
 }
 
 .about-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  display: block;
   filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
 }
 
 .about-content {
   flex: 1;
   max-width: 600px;
-  padding-left: 3rem;
+  padding: 0 1rem;
 }
 
 .about-heading {
-  font-size: 2.8rem;
+  font-size: 2.5rem;
   font-weight: 700;
   font-family: 'Poppins', sans-serif;
   margin-bottom: 1rem;
@@ -323,39 +317,84 @@ export default {
   background-color: #0b5ed7;
 }
 
+/* Section Spacing */
+.house-slider-section,
+.customer-section {
+  padding: 4rem 1rem;
+}
+
 .house-slider-section {
   background-color: #f8f9fa;
-  padding: 4rem 1rem;
 }
 
-.customer-section{
+.customer-section {
   background-color: #fff;
-  padding: 4rem 1rem;
 }
 
-/* Responsive Fix */
+/* Adjust about section layout on smaller screens */
 @media (max-width: 992px) {
-  .brand-about-section .container {
+  .about-container {
     flex-direction: column;
-    text-align: center;
+    padding: 2rem 1rem;
+  }
+
+  .about-image-wrapper {
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    border-radius: 20px;
+  }
+
+  .about-image {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
   }
 
   .about-content {
-    padding: 0 1rem;
+    max-width: 100%;
+    padding: 2rem 0 0;
+    text-align: center;
+  }
+
+  .about-heading {
+    font-size: 2rem;
+  }
+
+  .about-subtext {
+    font-size: 1rem;
   }
 
   .about-stats {
     grid-template-columns: repeat(2, 1fr);
-    justify-content: center;
+    gap: 1.5rem;
+    justify-items: center;
   }
 
-  .about-image-wrapper {
-    clip-path: ellipse(90% 90% at 50% 50%);
-    height: 300px;
-  }
-
-  .about-image {
-    height: 100%;
+  .btn-learn-more {
+    width: 100%;
+    max-width: 280px;
+    margin: auto;
   }
 }
+
+/* Fix hero text and padding on smaller screens */
+@media (max-width: 576px) {
+  .hero-section {
+    height: auto;
+    padding-top: 30vh;
+    padding-bottom: 4rem;
+  }
+
+  .hero-title {
+    font-size: 2rem;
+    padding: 0 1rem;
+  }
+
+  .hero-subtext {
+    font-size: 1rem;
+    padding: 0 1rem;
+  }
+}
+
 </style>

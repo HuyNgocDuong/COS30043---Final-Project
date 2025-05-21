@@ -5,16 +5,16 @@
 
     <!-- BANNER IMAGE SECTION -->
     <section class="about-banner text-center my-5">
-      <img src="@/assets/banner.png" alt="Urban Haven Showcase" class="img-fluid rounded shadow banner-image" />
+      <img class="img-fluid" src="@/assets/banner.png" alt="Urban Haven Showcase" class="img-fluid rounded shadow banner-image" />
     </section>
 
     <!-- OUR STORY SECTION -->
     <section class="our-story-section py-5">
-      <div class="container">
+      <div class="container-fluid container-md">
         <h2 class="text-center fw-bold mb-4">Our Story</h2>
         <div class="row align-items-center">
           <div class="col-md-6 mb-4 mb-md-0">
-            <img src="@/assets/house 4.png" alt="Our Story" class="img-fluid rounded shadow" />
+            <img class="img-fluid" src="@/assets/house 4.png" alt="Our Story" class="img-fluid rounded shadow" />
           </div>
           <div class="col-md-6">
             <p>
@@ -34,7 +34,7 @@
 
     <!-- OUR SERVICES SECTION -->
     <section class="services-section text-white py-5">
-      <div class="container">
+      <div class="container-fluid container-md">
         <h2 class="text-center mb-5 fw-bold text-black">Our Services</h2>
         <div class="row justify-content-center g-4">
           <div class="col-md-4">
@@ -64,11 +64,11 @@
 
     <!-- MEET OUR TEAM SECTION -->
     <section class="team-section py-5">
-      <div class="container">
+      <div class="container-fluid container-md">
         <h2 class="text-center fw-bold mb-5">Meet Our Team</h2>
         <div class="row justify-content-center g-4">
           <div class="col-6 col-md-4 col-lg-2 text-center" v-for="i in 5" :key="i">
-            <img :src="require(`@/assets/agent ${i}.png`)" :alt="`Agent ${i}`" class="team-img mb-3" />
+            <img class="img-fluid" :src="require(`@/assets/agent ${i}.png`)" :alt="`Agent ${i}`" class="team-img mb-3" />
             <h6 class="fw-bold">Agent {{ i }}</h6>
             <p class="text-muted small">Real Estate Specialist</p>
           </div>
@@ -78,7 +78,7 @@
 
     <!-- USER INTERACTION SECTION -->
     <section class="user-interaction-section py-5 bg-light">
-      <div class="container">
+      <div class="container-fluid container-md">
         <h2 class="text-center fw-bold mb-4">About This Application</h2>
         <p class="text-center mb-4">
           Urban Haven is a real estate platform built with Vue.js, offering users a seamless experience to browse, compare, and book properties.
@@ -119,8 +119,8 @@
       </div>
 
       <div class="text-center">
-        <img v-if="selectedImage === 'mountain'" :src="require('@/assets/mountain.png')" alt="Mountain View" class="img-fluid rounded shadow" style="max-width: 500px;" />
-        <img v-if="selectedImage === 'ocean'" :src="require('@/assets/ocean.png')" alt="Ocean View" class="img-fluid rounded shadow" style="max-width: 500px;" />
+        <img class="img-fluid" v-if="selectedImage === 'mountain'" :src="require('@/assets/mountain.png')" alt="Mountain View" class="img-fluid rounded shadow" style="max-width: 500px;" />
+        <img class="img-fluid" v-if="selectedImage === 'ocean'" :src="require('@/assets/ocean.png')" alt="Ocean View" class="img-fluid rounded shadow" style="max-width: 500px;" />
       </div>
     </div>
   </section>

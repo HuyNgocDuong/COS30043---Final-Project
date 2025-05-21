@@ -5,7 +5,7 @@
       <NavBar />
     </section>
 
-    <!-- Banner with Title and Subtext -->
+    <!-- Banner -->
     <div class="position-relative w-100 mb-5 mt-5">
       <img
         src="@/assets/house 5.png"
@@ -22,9 +22,8 @@
       </div>
     </div>
 
-    <!-- Main Content -->
+    <!-- Filters -->
     <div class="container pb-5">
-      <!-- Modern Framed Filters Section -->
       <div class="card shadow-sm border-0 rounded-4 p-4 mb-5 bg-light">
         <h5 class="fw-semibold mb-4">Filter Listings</h5>
         <div class="row gy-3 gx-4">
@@ -60,12 +59,10 @@
 
       <!-- Property Cards -->
       <div class="row g-4">
-        <!-- Show when no results -->
         <div v-if="filteredHouses.length === 0" class="text-center text-muted">
           No matching properties found.
         </div>
 
-        <!-- Loop through filtered houses -->
         <div class="col-md-4" v-for="house in filteredHouses" :key="house.id">
           <div class="card shadow h-100 d-flex flex-column">
             <img
@@ -81,15 +78,36 @@
                 <strong>Type:</strong> {{ house.type }}<br />
                 <strong>Price:</strong> ${{ house.price.toLocaleString() }}
               </p>
-              <router-link
-                :to="`/property/${house.id}`"
-                class="btn btn-outline-primary mt-auto"
-              >
-                View Details
-              </router-link>
+              <div class="mt-auto">
+                <router-link
+                  :to="`/property/${house.id}`"
+                  class="btn btn-outline-primary w-100 mb-2"
+                >
+                  View Details
+                </router-link>
+                <div class="form-check text-start">
+                  <input
+                    class="form-check-input"
+                    type="checkbox"
+                    :value="house.id"
+                    v-model="compareList"
+                  />
+                  <label class="form-check-label small">Compare</label>
+                </div>
+              </div>
             </div>
           </div>
         </div>
+      </div>
+
+      <!-- Compare Button -->
+      <div class="text-center mt-4" v-if="compareList.length >= 2">
+        <router-link
+          :to="`/compare?ids=${compareList.join(',')}`"
+          class="btn btn-primary rounded-pill px-4"
+        >
+          Compare Selected ({{ compareList.length }})
+        </router-link>
       </div>
     </div>
 
@@ -118,7 +136,8 @@ export default {
         title: '',
         type: '',
         location: ''
-      }
+      },
+      compareList: []
     }
   },
   computed: {

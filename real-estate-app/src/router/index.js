@@ -4,6 +4,7 @@ import About from '../components/About.vue'
 import Properties from '../components/Properties.vue'
 import News from '../components/News.vue'
 import PropertyDetails from '../components/PropertyDetails.vue'
+import AuthForm from '@/components/AuthForm.vue'
 
 const routes = [
   {
@@ -40,6 +41,21 @@ const routes = [
     name: 'PropertyDetails',
     component: PropertyDetails,
     props: true
+  },
+  {
+  path: '/compare',
+  name: 'ComparePage',
+  component: () => import('@/components/ComparePage.vue')
+  },
+  {
+  path: '/contact',
+  name: 'ContactUs',
+  component: () => import('@/components/ContactUs.vue')
+  },
+  {
+    path: '/auth',
+    name: 'Auth',
+    component: AuthForm
   }
 ]
 

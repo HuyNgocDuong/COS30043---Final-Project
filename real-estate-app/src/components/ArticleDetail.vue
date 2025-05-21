@@ -9,7 +9,7 @@
 
     <!-- Main Content -->
     <div class="container py-4 d-flex justify-content-center">
-      <div class="w-100" style="max-width: 850px;">
+      <div class="w-100" style="max-width: 100%;">
         <div v-if="article">
           <!-- Title + Favorite -->
           <div class="d-flex justify-content-between align-items-start mb-3">
@@ -21,7 +21,7 @@
           <img
             :src="article.urlToImage || fallbackImage"
             class="img-fluid mx-auto d-block mb-4 shadow rounded"
-            style="max-height: 400px; width: 100%; max-width: 850px; object-fit: cover;"
+            style="max-height: 400px; width: 100%; max-width: 100%; object-fit: cover;"
           />
 
           <!-- Published Date -->

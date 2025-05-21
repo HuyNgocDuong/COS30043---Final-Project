@@ -1,29 +1,53 @@
 <template>
-  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm w-100 px-5 py-4 nav-tall">
-    <div class="container-fluid d-flex justify-content-between align-items-center">
-      <ul class="navbar-nav flex-row">
-        <li class="nav-item me-4">
-          <router-link to="/home" class="nav-link">Home</router-link>
-        </li>
-        <li class="nav-item me-4">
-          <router-link to="/about" class="nav-link">About</router-link>
-        </li>
-        <li class="nav-item me-4">
-          <router-link to="/properties" class="nav-link">Properties</router-link>
-        </li>
-        <li class="nav-item me-4">
-          <router-link to="/news" class="nav-link">News</router-link>
-        </li>
-      </ul>
+  <nav class="navbar navbar-expand-lg navbar-light bg-white shadow-sm fixed-top nav-tall px-3 px-lg-5 py-3 py-lg-4">
+    <div class="container-fluid">
+      <!-- Logo (Mobile view) -->
+      <router-link to="/" class="navbar-brand d-lg-none">
+        <img class="img-fluid" src="@/assets/logo.png" alt="Urban Haven Logo" class="logo-img-small" />
+      </router-link>
 
-      <div class="navbar-logo text-center position-absolute top-50 start-50 translate-middle">
-        <img src="@/assets/logo.png" alt="Logo" class="logo-img" />
-      </div>
+      <!-- Toggler (hamburger) -->
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-bs-toggle="collapse"
+        data-bs-target="#navbarContent"
+        aria-controls="navbarContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
 
-      <div class="d-flex align-items-center gap-3">
-        <router-link to="/signup" class="btn btn-outline-dark">Sign Up</router-link>
-        <router-link to="/login" class="btn btn-outline-dark">Login</router-link>
-        <router-link to="/contact" class="btn btn-outline-dark">Contact Us</router-link>
+      <!-- Navbar Content -->
+      <div class="collapse navbar-collapse justify-content-between" id="navbarContent">
+        <!-- Left Navigation -->
+        <ul class="navbar-nav gap-lg-4 text-center text-lg-start">
+          <li class="nav-item">
+            <router-link to="/home" class="nav-link">Home</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/about" class="nav-link">About</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/properties" class="nav-link">Properties</router-link>
+          </li>
+          <li class="nav-item">
+            <router-link to="/news" class="nav-link">News</router-link>
+          </li>
+        </ul>
+
+        <!-- Centered Logo (Large screens only) -->
+        <div class="navbar-logo d-none d-lg-block position-absolute top-50 start-50 translate-middle">
+          <img class="img-fluid" src="@/assets/logo.png" alt="Urban Haven Logo" class="logo-img" />
+        </div>
+
+        <!-- Right Buttons -->
+        <div class="d-flex flex-column flex-lg-row align-items-center gap-2 mt-3 mt-lg-0">
+          <router-link to="/auth?mode=signup" class="btn btn-outline-dark w-100 w-lg-auto">Sign Up</router-link>
+          <router-link to="/auth?mode=login" class="btn btn-outline-dark w-100 w-lg-auto">Login</router-link>
+          <router-link to="/contact" class="btn btn-outline-dark w-100 w-lg-auto">Contact Us</router-link>
+        </div>
       </div>
     </div>
   </nav>
@@ -31,21 +55,19 @@
 
 <style scoped>
 .nav-tall {
-  min-height: 120px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 10;
-  background-color: #fff;
+  min-height: 100px;
+  z-index: 1050;
 }
 
 .logo-img {
-  height: auto;
-  width: 270px;
-  max-width: 100%;
+  width: 260px;
   object-fit: contain;
   display: block;
-  margin: 0 auto;
+}
+
+.logo-img-small {
+  width: 160px;
+  object-fit: contain;
+  display: block;
 }
 </style>

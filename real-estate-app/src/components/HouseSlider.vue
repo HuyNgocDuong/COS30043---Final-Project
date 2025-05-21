@@ -31,7 +31,7 @@
     >
       <swiper-slide v-for="house in houses" :key="house.id">
         <div class="project-card">
-          <img :src="require(`@/assets/${house.image}`)" class="img-fluid" :alt="house.title" />
+          <img class="img-fluid" :src="require(`@/assets/${house.image}`)" class="img-fluid" :alt="house.title" />
           <div class="project-info">
             <h5>{{ house.title }}</h5>
             <p>${{ house.price.toLocaleString() }} | {{ house.location }}</p>
