@@ -44,9 +44,9 @@
 
         <!-- Right Buttons -->
         <div class="d-flex flex-column flex-lg-row align-items-center gap-2 mt-3 mt-lg-0">
-          <router-link to="/auth?mode=signup" class="btn btn-outline-dark w-100 w-lg-auto">Sign Up</router-link>
-          <router-link to="/auth?mode=login" class="btn btn-outline-dark w-100 w-lg-auto">Login</router-link>
-          <router-link to="/contact" class="btn btn-outline-dark w-100 w-lg-auto">Contact Us</router-link>
+          <router-link to="/auth?mode=signup" class="btn btn-outline-dark w-100 w-lg-auto text-nowrap">Sign Up</router-link>
+          <router-link to="/auth?mode=login" class="btn btn-outline-dark w-100 w-lg-auto text-nowrap">Login</router-link>
+          <router-link to="/contact" class="btn btn-outline-dark w-100 w-lg-auto text-nowrap">Contact Us</router-link>
         </div>
       </div>
     </div>
@@ -66,8 +66,41 @@
 }
 
 .logo-img-small {
-  width: 160px;
+  width: 140px;
   object-fit: contain;
   display: block;
+}
+
+@media (max-width: 576px) {
+  .nav-tall {
+    padding: 0.5rem 1rem !important;
+    min-height: auto;
+  }
+
+  .navbar-collapse {
+    text-align: center;
+  }
+
+  .navbar-nav .nav-link {
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+
+  .d-flex.flex-column.flex-lg-row {
+    width: 100%;
+  }
+
+  .d-flex.flex-column.flex-lg-row .btn {
+    width: 100%;
+    font-size: 0.95rem;
+  }
+
+  .navbar-logo {
+    display: none !important;
+  }
+
+  .logo-img-small {
+    width: 120px;
+  }
 }
 </style>

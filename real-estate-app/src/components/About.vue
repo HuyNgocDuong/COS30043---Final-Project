@@ -4,8 +4,8 @@
     <NavBar />
 
     <!-- BANNER IMAGE SECTION -->
-    <section class="about-banner text-center my-5">
-      <img src="@/assets/banner.png" alt="Urban Haven Showcase" class="img-fluid img-fluid rounded shadow banner-image" />
+    <section class="ratio ratio-16x9 about-wrapper">
+      <img src="@/assets/banner.png" alt="Urban Haven Showcase" class="img-fluid object-fit-cover" />
     </section>
 
     <!-- OUR STORY SECTION -->
@@ -184,10 +184,17 @@ export default {
   margin-right: -50vw;
 }
 
+.banner-wrapper {
+  width: 100%;
+  overflow: hidden;
+}
+
 .banner-image {
   width: 100%;
   height: auto;
   display: block;
+  object-fit: cover;
+  border-radius: 0;
 }
 
 .services-section {
@@ -226,4 +233,53 @@ export default {
 .team-img:hover {
   transform: scale(1.05);
 }
+
+@media (max-width: 576px) {
+  h2 {
+    font-size: 1.75rem !important;
+  }
+
+  .our-story-section p {
+    font-size: 1rem !important;
+    line-height: 1.6;
+  }
+
+  .team-img {
+    max-width: 90px;
+    height: 90px;
+  }
+
+  .form-check-label,
+  .form-label {
+    font-size: 0.95rem;
+  }
+
+  .form-control {
+    font-size: 0.95rem;
+    padding: 0.5rem 0.75rem;
+  }
+
+  .service-card h4 {
+    font-size: 1rem;
+  }
+
+  .service-card p {
+    font-size: 0.95rem;
+  }
+
+  .service-card {
+    padding: 1rem !important;
+  }
+
+  .banner-image {
+    height: auto !important;
+    max-height: 250px;
+    object-fit: cover;
+  }
+
+  .about-wrapper.ratio-16x9 {
+    aspect-ratio: 16 / 10;
+  }
+}
+
 </style>

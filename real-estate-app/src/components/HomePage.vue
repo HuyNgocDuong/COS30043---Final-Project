@@ -10,7 +10,7 @@
       class="hero-section d-flex justify-content-center align-items-center text-center"
       :style="{ backgroundImage: `url(${require('@/assets/home.png')})` }"
     >
-      <div : class="hero-text { 'hero-visible': heroVisible }" v-show="heroVisible">
+      <div :class="['hero-text', { 'hero-visible': heroVisible }]" v-show="heroVisible">
         <h1 class="hero-title mb-3">Find Your Dream House</h1>
         <div class="hero-divider mb-3"></div>
         <p class="hero-subtext">

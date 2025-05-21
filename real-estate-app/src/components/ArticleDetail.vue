@@ -27,17 +27,18 @@
           <!-- Published Date -->
           <p class="text-muted mb-2"><strong>Published:</strong> {{ article.publishedAt }}</p>
 
-          <!-- Rating Stars -->
+         <!-- Rating Stars -->
           <div class="mb-4">
             <span class="me-2"><strong>Rate this article:</strong></span>
             <i
               v-for="star in 5"
               :key="star"
-              : class="bi star <= rating ? 'bi-star-fill text-warning' : 'bi-star text-secondary'"
+              :class="star <= rating ? 'bi bi-star-fill text-warning' : 'bi bi-star text-secondary'"
               style="cursor: pointer; font-size: 1.5rem;"
               @click="setRating(star)"
             ></i>
           </div>
+
 
           <!-- Content -->
           <div v-html="article.content || article.description" class="mb-4"></div>

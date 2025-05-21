@@ -50,6 +50,7 @@
   display: flex;
   justify-content: center;
   gap: 1rem;
+  flex-wrap: wrap;
 }
 
 .social-icon {
@@ -80,5 +81,34 @@
 .footer-bottom {
   font-size: 0.85rem;
   color: #fff;
+  padding: 0 1rem;
+  word-wrap: break-word;
+  text-align: center;
 }
+
+@media (max-width: 576px) {
+  .footer-link {
+    display: block;
+    margin: 0.5rem 0;
+    font-size: 0.9rem;
+  }
+
+  .footer-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .social-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+
+  .footer-bottom {
+    font-size: 0.8rem;
+    line-height: 1.5;
+  }
+}
+
 </style>

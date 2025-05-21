@@ -49,11 +49,12 @@
       </router-link>
     </div>
 
-     <!-- FOOTER SECTION -->
+     
+  </div>
+  <!-- FOOTER SECTION -->
     <section class="footer-section">
       <SiteFooter />
     </section>
-  </div>
 </div>
 </template>
 
