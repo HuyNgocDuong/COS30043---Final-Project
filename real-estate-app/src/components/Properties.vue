@@ -15,7 +15,7 @@
 
     <!-- Filters -->
     <div class="container pb-5">
-      <div class="card shadow-sm border-0 rounded-4 p-4 mb-5 bg-light">
+      <div class="card shadow-sm border-0 rounded-4 p-4 mb-4 bg-light">
         <h5 class="fw-semibold mb-4">Filter Listings</h5>
         <div class="row gy-3 gx-4">
           <div class="col-md-4">
@@ -46,6 +46,13 @@
             </select>
           </div>
         </div>
+      </div>
+
+      <!-- Manage Listings Button (Only for Admin) -->
+      <div class="text-end mb-4" v-if="isAdmin">
+        <router-link to="/manage-listings" class="btn btn-dark rounded-pill px-4">
+          Manage Listings
+        </router-link>
       </div>
 
       <!-- Property Cards -->
@@ -110,7 +117,6 @@
 </template>
 
 <script>
-import houses from '@/assets/houses.json'
 import NavBar from '@/components/NavBar.vue'
 import SiteFooter from '@/components/SiteFooter.vue'
 
@@ -122,13 +128,14 @@ export default {
   },
   data() {
     return {
-      houses,
+      houses: [],
       filters: {
         title: '',
         type: '',
         location: ''
       },
-      compareList: []
+      compareList: [],
+      isAdmin: localStorage.getItem('userRole') === 'admin'
     }
   },
   computed: {
@@ -141,6 +148,16 @@ export default {
         )
       })
     }
+  },
+  mounted() {
+    fetch('https://mercury.swin.edu.au/cos30043/s104471956/FinalProject/php/houses.json?t=' + Date.now())
+      .then(res => res.json())
+      .then(data => {
+        this.houses = data
+      })
+      .catch(err => {
+        console.error('Failed to load property data:', err);
+      });
   }
 }
 </script>

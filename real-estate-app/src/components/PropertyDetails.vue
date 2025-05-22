@@ -1,5 +1,5 @@
 <template>
-  <div class="container py-5">
+  <div class="container py-5" v-if="property">
     <!-- Page Title -->
     <h2 class="text-center fw-bold mb-4 text-purple">Property Details</h2>
 
@@ -47,14 +47,23 @@
 </template>
 
 <script>
-import properties from '@/assets/houses.json'
-
 export default {
-  props: ['id'],
-  computed: {
-    property() {
-      return properties.find(p => p.id === parseInt(this.id))
+  name: 'PropertyDetails',
+  data() {
+    return {
+      property: null
     }
+  },
+  mounted() {
+    const id = parseInt(this.$route.params.id);
+    fetch('https://mercury.swin.edu.au/cos30043/s104471956/FinalProject/php/houses.json')
+      .then(res => res.json())
+      .then(data => {
+        this.property = data.find(p => p.id === id);
+      })
+      .catch(err => {
+        console.error('Failed to load property details:', err);
+      });
   }
 }
 </script>
@@ -66,9 +75,19 @@ export default {
 
 .property-image-wrapper {
   width: 100%;
+  max-width: 900px; 
+  margin: 0 auto;    
   overflow: hidden;
   border-radius: 16px;
 }
+
+.property-image-wrapper img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border-radius: 16px;
+}
+
 
 .property-image {
   width: 100%;
@@ -76,5 +95,4 @@ export default {
   object-fit: cover;
   max-height: 600px;
 }
-
 </style>

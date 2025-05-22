@@ -59,7 +59,6 @@
 </template>
 
 <script>
-import properties from '@/assets/houses.json'
 import NavBar from '@/components/NavBar.vue'
 import SiteFooter from '@/components/SiteFooter.vue'
 
@@ -69,15 +68,26 @@ export default {
     NavBar,
     SiteFooter
   },
-  computed: {
-    selectedProperties() {
-      const params = new URLSearchParams(this.$route.query)
-      const ids = params.get('ids')
-      if (!ids) return []
-
-      const idList = ids.split(',').map(id => parseInt(id))
-      return properties.filter(p => idList.includes(p.id))
+  data() {
+    return {
+      allHouses: [],
+      compared: []
     }
+  },
+  mounted() {
+    const params = new URLSearchParams(this.$route.query);
+    const ids = params.get('ids')?.split(',').map(id => parseInt(id)) || [];
+
+    fetch('https://mercury.swin.edu.au/cos30043/s104471956/FinalProject/php/houses.json')
+      .then(res => res.json())
+      .then(data => {
+        this.allHouses = data;
+        this.compared = data.filter(h => ids.includes(h.id));
+      })
+      .catch(err => {
+        console.error('Failed to load comparison data:', err);
+      });
   }
 }
+
 </script>
