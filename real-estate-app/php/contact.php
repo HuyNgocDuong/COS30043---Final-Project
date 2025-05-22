@@ -34,7 +34,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   } elseif (empty($message)) {
     $error = "Message cannot be empty.";
   } else {
-    // Insert into database
     $sql = "INSERT INTO contact_messages (name, email, phone, property, message)
             VALUES ('$name', '$email', '$phone', '$property', '$message')";
     if ($conn->query($sql)) {
@@ -75,7 +74,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     .form-section h2 {
       color: #6a1b9a;
-      margin-bottom: 20px;
+      margin-bottom: 30px;
       font-weight: bold;
     }
 
@@ -88,10 +87,25 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       margin-top: 8px;
     }
 
+    .back-link {
+      display: inline-block;
+      margin-bottom: 20px;
+      text-decoration: none;
+      color: #6a1b9a;
+      font-weight: bold;
+      font-size: 14px;
+      transition: color 0.2s ease;
+    }
+
+    .back-link:hover {
+      color: #ff512f;
+    }
+
     form {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 20px;
+      gap: 25px 30px; /* 25px row gap, 30px column gap */
+      align-items: center;
     }
 
     form textarea {
@@ -108,6 +122,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       border: 1px solid #ccc;
       border-radius: 25px;
       width: 100%;
+      box-sizing: border-box;
     }
 
     input:invalid {
@@ -162,6 +177,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       .contact-wrapper {
         flex-direction: column;
         align-items: center;
+        padding: 20px;
       }
 
       form {
@@ -178,6 +194,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 <div class="contact-wrapper">
   <div class="form-section">
+    <a href="../dist/index.html" class="back-link">? Back to Website</a>
     <h2>Get in touch</h2>
 
     <?php if ($success): ?>
@@ -192,12 +209,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
       <input type="text" name="phone" placeholder="Phone Number" pattern="[0-9]{8,15}" title="Enter 8 to 15 digits">
       <input type="text" name="property" placeholder="Interested Property">
       <textarea name="message" placeholder="Your Message" required></textarea>
-      <button type="submit">Submit →</button>
+      <button type="submit">Submit ?</button>
     </form>
   </div>
 
   <div class="image-section">
-    <img src="your-image.svg" alt="Contact Illustration" />
+    <img src="right_img.png" alt="Contact Illustration" />
   </div>
 </div>
 

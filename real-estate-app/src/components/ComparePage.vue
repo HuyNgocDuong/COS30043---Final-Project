@@ -1,28 +1,30 @@
 <template>
-<div>
-<!-- NAVIGATION BAR -->
+  <div>
+    <!-- NAVIGATION BAR -->
     <section class="navbar-section">
-        <NavBar />
+      <NavBar />
     </section>
-  <div class="container py-5">
-    <h2 class="text-center fw-bold mb-5">Compare Properties</h2>
 
-    <div v-if="selectedProperties.length >= 2" class="row g-4 justify-content-center">
-      <div
-        v-for="property in selectedProperties"
-        :key="property.id"
-        class="col-md-4"
-      >
-        <div class="card h-100 shadow-sm">
-          <img
-            :src="require(`@/assets/${property.image}`)"
-            class="card-img-top"
-            :alt="property.title"
-            style="height: 250px; object-fit: cover;"
-          />
-          <div class="card-body">
-            <h5 class="card-title">{{ property.title }}</h5>
-            <p class="card-text">
+    <div class="container py-5">
+      <h2 class="text-center fw-bold mb-5">Compare Properties</h2>
+
+      <!-- Comparison Section -->
+      <div v-if="compared.length >= 2" class="row g-4 justify-content-center">
+        <div
+          v-for="property in compared"
+          :key="property.id"
+          class="col-md-4"
+        >
+          <div class="card h-100 shadow-sm">
+            <img
+              :src="getImageUrl(property.image)"
+              class="card-img-top"
+              :alt="property.title"
+              style="height: 250px; object-fit: cover;"
+            />
+            <div class="card-body">
+              <h5 class="card-title">{{ property.title }}</h5>
+              <p class="card-text">
                 <strong><i class="fa-solid fa-location-dot me-1"></i> Address:</strong> {{ property.address }}<br />
                 <strong><i class="fa-solid fa-tag me-1"></i> Type:</strong> {{ property.houseType }}<br />
                 <strong><i class="fa-solid fa-bed me-1"></i> Bedrooms:</strong> {{ property.bedrooms }}<br />
@@ -32,30 +34,34 @@
                 <strong><i class="fa-solid fa-envelope me-1"></i> Postcode:</strong> {{ property.postcode }}<br />
                 <strong><i class="fa-solid fa-map-marker-alt me-1"></i> Distance:</strong> {{ property.distance }}<br />
                 <strong><i class="fa-solid fa-dollar-sign me-1"></i> Price:</strong> ${{ property.price.toLocaleString() }}
-            </p>
+              </p>
 
-            <router-link :to="`/property/${property.id}`" class="btn btn-outline-primary btn-sm w-100">
-              View Details
-            </router-link>
+              <router-link :to="`/property/${property.id}`" class="btn btn-outline-primary btn-sm w-100">
+                View Details
+              </router-link>
+            </div>
           </div>
         </div>
       </div>
+
+      <!-- Message if fewer than 2 properties -->
+      <div v-else class="alert alert-warning text-center">
+        Please select at least two properties to compare.
+      </div>
+
+      <!-- Return Button -->
+      <div class="text-center mt-5">
+        <router-link to="/properties" class="btn btn-secondary rounded-pill px-4">
+          <i class="bi bi-arrow-left-circle me-2"></i>Return to Listings
+        </router-link>
+      </div>
     </div>
 
-    <!-- Return Button -->
-    <div class="text-center mt-5">
-      <router-link to="/properties" class="btn btn-secondary rounded-pill px-4">
-        <i class="bi bi-arrow-left-circle me-2"></i>Return to Listings
-      </router-link>
-    </div>
-
-     
-  </div>
-  <!-- FOOTER SECTION -->
+    <!-- FOOTER SECTION -->
     <section class="footer-section">
       <SiteFooter />
     </section>
-</div>
+  </div>
 </template>
 
 <script>
@@ -64,7 +70,7 @@ import SiteFooter from '@/components/SiteFooter.vue'
 
 export default {
   name: 'ComparePage',
-  components:{
+  components: {
     NavBar,
     SiteFooter
   },
@@ -87,7 +93,13 @@ export default {
       .catch(err => {
         console.error('Failed to load comparison data:', err);
       });
+  },
+  methods: {
+    getImageUrl(imageName) {
+      // Properly encode the image name to handle spaces and special characters
+      const encoded = encodeURIComponent(imageName);
+      return `https://mercury.swin.edu.au/cos30043/s104471956/FinalProject/php/images/${encoded}`;
+    }
   }
 }
-
 </script>
