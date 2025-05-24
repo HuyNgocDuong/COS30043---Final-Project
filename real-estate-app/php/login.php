@@ -7,7 +7,7 @@ $error = '';
 // Handle login POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
   $email = $conn->real_escape_string($_POST['email']);
-  $password = hash('sha256', $_POST['password']); // For PHP 5.4 compatibility
+  $password = hash('sha256', $_POST['password']);
 
   $query = "SELECT * FROM users WHERE email = '$email'";
   $result = $conn->query($query);

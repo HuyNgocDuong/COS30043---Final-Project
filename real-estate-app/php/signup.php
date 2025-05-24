@@ -19,9 +19,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
   if (!empty($_POST['name']) && !empty($_POST['email']) && !empty($_POST['password'])) {
     $name = $conn->real_escape_string($_POST['name']);
     $email = $conn->real_escape_string($_POST['email']);
-    $password = hash('sha256', $_POST['password']); // PHP 5.4 compatible
+    $password = hash('sha256', $_POST['password']); 
 
-    // ✅ Validate that the name only contains letters and spaces
     if (!preg_match("/^[a-zA-Z\s]+$/", $name)) {
       $error = "Name must contain only letters and spaces.";
     } else {

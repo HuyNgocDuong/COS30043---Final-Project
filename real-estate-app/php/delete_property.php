@@ -40,7 +40,7 @@ function deleteProperty($id) {
 
   $houses = json_decode(file_get_contents($file), true);
 
-  // Use foreach to filter manually (no arrow function in PHP 5.4)
+  // Use foreach to filter manually 
   $updated = array();
   foreach ($houses as $house) {
     if (intval($house['id']) !== intval($id)) {
