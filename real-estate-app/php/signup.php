@@ -21,21 +21,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $conn->real_escape_string($_POST['email']);
     $password = hash('sha256', $_POST['password']); // PHP 5.4 compatible
 
-    $check = $conn->query("SELECT id FROM users WHERE email = '$email'");
-    if ($check && $check->num_rows > 0) {
-      $error = "Email already registered.";
+    // ✅ Validate that the name only contains letters and spaces
+    if (!preg_match("/^[a-zA-Z\s]+$/", $name)) {
+      $error = "Name must contain only letters and spaces.";
     } else {
-      $sql = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$password')";
-      if ($conn->query($sql)) {
-        $success = "Signup successful!";
+      $check = $conn->query("SELECT id FROM users WHERE email = '$email'");
+      if ($check && $check->num_rows > 0) {
+        $error = "Email already registered.";
       } else {
-        $error = "Database error: " . $conn->error;
+        $sql = "INSERT INTO users (name, email, password) VALUES ('$name', '$email', '$password')";
+        if ($conn->query($sql)) {
+          $success = "Signup successful!";
+        } else {
+          $error = "Database error: " . $conn->error;
+        }
       }
     }
   } else {
     $error = "Please fill in all fields.";
   }
 }
+
 ?>
 
 <!DOCTYPE html>
