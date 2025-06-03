@@ -133,7 +133,6 @@ export default {
       if (this.showFavoritesOnly) {
         result = result.filter(a => this.favorites.includes(a.url));
       }
-
       return result;
     }
   },
